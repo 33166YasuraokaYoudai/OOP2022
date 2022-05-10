@@ -4,14 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exercise {
+namespace Exercise03 {
     class Program {
         static void Main(string[] args) {
-
-            var songs = new List<Song>();
-
-            Song song = new Song("歌のタイトル","アーティスト名","秒");
-
         }
     }
 }
