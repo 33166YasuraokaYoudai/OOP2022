@@ -14,7 +14,7 @@ namespace Exercise {
         public int Length { get; set; } //演奏時間（単位は秒）
 
         //コンストラクタ
-        public Song(string title, string artistName, int length) {
+        public Song(string Title, string ArtistName, int Length) {
 
         }
 
