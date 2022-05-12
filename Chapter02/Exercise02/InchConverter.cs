@@ -14,6 +14,10 @@ namespace Exercise02 {
         public static double ToMeter(double inch) {
             return inch * ratio;
         }
+        //メートルからインチを求める(静的メソッド)
+        public static double FromMeter(double meter) {
+            return meter / ratio;
+        }
 
 
 
