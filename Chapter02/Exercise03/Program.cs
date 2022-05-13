@@ -18,14 +18,14 @@ namespace Exercise03 {
                 Console.Write(">");
 
                 select = int.Parse(Console.ReadLine());
-                IDictionary<string, int> amountPerStore = null;
+               
                 switch (select) {
                     case 1:
-                        amountPerStore = sales.GetPerStoreSales();
+                        OutPut(sales.GetPerStoreSales());
                         break;
 
                     case 2:
-                        amountPerStore = sales.GetPerCategorySales();
+                        OutPut(sales.GetPerCategorySales());
                         break;
 
                     case 999:
@@ -33,9 +33,13 @@ namespace Exercise03 {
 
                 }
 
-                foreach (var obj in amountPerStore) {
-                    Console.WriteLine("{0} {1} ", obj.Key, obj.Value);
-                }
+            }
+        }
+        private static void OutPut(IDictionary<string, int> amountPerStore) {
+            foreach (var obj in amountPerStore) {
+                Console.WriteLine("{0} {1} ", obj.Key, obj.Value);
+
+
             }
         }
     }
