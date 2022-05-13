@@ -16,7 +16,7 @@ namespace Exercise01 {
             Excercise1_2(numbers);
             Console.WriteLine("------------");
         }
-
+        
         private static void Excercise1_1(List<int> numbers) {
             var exists = numbers.Exists(s => s % 8 == 0 || s % 9 ==0);
             Console.WriteLine(exists);
