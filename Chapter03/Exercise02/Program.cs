@@ -43,15 +43,17 @@ namespace Exercise02 {
 
         private static void Excercise2_3(List<string> names) {
 
-            var count = names.Where(s => s.Contains("o"));
-            foreach (var s in count) {
-                Console.WriteLine(s);
+            var selected = names.Where(s => s.Contains('o')).ToArray();//配列として抽出
+            foreach (var name in selected) {
+                Console.WriteLine(name);
             }
 
         }
         private static void Excercise2_4(List<string> names) {
-           
-            
+            var select = names.Where(s => s.StartsWith("B")).Select(s => new { s.Length,s});
+            foreach (var name in select) {
+                Console.WriteLine(name.Length + "," +  name.s);
+            }
         }
     }
 }
