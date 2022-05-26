@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Exercise01 {
     public class YearMonth {
 
-        //4.11
+        //4.1.1
         public int Year { get; private set; } //読み取り専用
 
         public int Month { get; private set; }　//読み取り専用
