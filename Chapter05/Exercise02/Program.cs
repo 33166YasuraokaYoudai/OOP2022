@@ -10,12 +10,14 @@ namespace Exercise02 {
 
             var intstr = Console.ReadLine();
 
-
-            if (int.TryParse(intstr, out var IntStr)) {
-                Console.WriteLine("{0:N}", IntStr);
+            int num;//整数値を入れる変数を用意
+            //P126
+            if(int.TryParse(intstr,out num)) {
+                Console.WriteLine("{0:#:#}", num);//数値への変換成功
             } else {
-                Console.WriteLine("無理");
+                Console.WriteLine("できない");//変換失敗
             }
+           
         }
     }
 }
