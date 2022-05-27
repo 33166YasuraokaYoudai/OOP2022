@@ -59,6 +59,7 @@ namespace Exercise03 {
             foreach (var item in word) {
                 sb.Append(item + ' ');
             }
+            var str = sb.ToString().TrimEnd();
             Console.WriteLine(sb);
         }
     }
