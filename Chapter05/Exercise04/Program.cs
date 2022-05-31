@@ -9,7 +9,10 @@ namespace Exercise04 {
         static void Main(string[] args) {
 
             var line = "Novelist=谷崎潤一郎;BestWork=春琴抄;Born=1886";
-
+            foreach (var item in line.Split(';')) {
+                var array = item.Split('=');
+                Console.WriteLine("{0}:{1}", ToJapanese(array[0]), array[1]);
+            }
 
         }
 
