@@ -53,14 +53,16 @@ namespace Exercise03 {
 
         private static void Exercise3_5(string text) {
 
-            String[] word = text.Split(' ');
-            var sb = new StringBuilder();
-
-            foreach (var item in word) {
-                sb.Append(item + ' ');
+            var array = text.Split(' ').ToArray();
+            if (array.Length > 0) {
+                var sb = new StringBuilder(array[0]);
+                foreach (var word in array.Skip(1)) {
+                    sb.Append(' ');
+                    sb.Append(word);
+                }
+                var str = sb.ToString();
+                Console.WriteLine(str);
             }
-            var str = sb.ToString().TrimEnd();
-            Console.WriteLine(sb);
-        }
+        }   
     }
 }
