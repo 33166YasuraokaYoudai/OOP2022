@@ -33,22 +33,31 @@ namespace Exercise01 {
 
         private static void Exercise1_2(int[] numbers) {
             //最後から２つの要素を取り出す
-            foreach (var item in numbers.Skip(numbers.Length - 2).Take(2)) {
+            foreach (var item in numbers.Skip(numbers.Length - 2)) {
                 Console.WriteLine(item);
 
             }
         }
 
         private static void Exercise1_3(int[] numbers) {
-           
+
+            foreach (var item in numbers) {
+                Console.WriteLine(item.ToString());
+
+            }
+            
         }
 
         private static void Exercise1_4(int[] numbers) {
-           
+            foreach (var item in numbers.OrderBy(s => s).Take(3)) {
+                Console.WriteLine(item);
+            }
         }
 
         private static void Exercise1_5(int[] numbers) {
-            
+            foreach (var item in numbers.Distinct().Where(s => s > 10)) {
+                Console.WriteLine(item);
+            }
         }
     }
 }
