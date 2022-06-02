@@ -41,11 +41,11 @@ namespace Exercise01 {
 
         private static void Exercise1_3(int[] numbers) {
 
-            foreach (var item in numbers) {
-                Console.WriteLine(item.ToString());
+            foreach (var item in numbers.Select(s => s.ToString())) {
+                Console.WriteLine(item);
 
             }
-            
+        
         }
 
         private static void Exercise1_4(int[] numbers) {
