@@ -55,6 +55,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample0607", "FormAppSample
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberGame", "FormAppSample\NumberGame\NumberGame.csproj", "{7EC3B2F1-C377-4DA3-8ED7-E1AA35EAA128}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddressBook", "FormAppSample\AddressBook\AddressBook.csproj", "{8D417D77-3EA4-44C3-975B-276CF01F8905}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +143,10 @@ Global
 		{7EC3B2F1-C377-4DA3-8ED7-E1AA35EAA128}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EC3B2F1-C377-4DA3-8ED7-E1AA35EAA128}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EC3B2F1-C377-4DA3-8ED7-E1AA35EAA128}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D417D77-3EA4-44C3-975B-276CF01F8905}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D417D77-3EA4-44C3-975B-276CF01F8905}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D417D77-3EA4-44C3-975B-276CF01F8905}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D417D77-3EA4-44C3-975B-276CF01F8905}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -166,6 +172,7 @@ Global
 		{48BE30C3-9055-47B9-BE23-6BEF0A82B770} = {EB8A863E-0535-40A0-8345-ED290CBA7E24}
 		{36DA1237-5EBF-46EA-898B-8179E77B3082} = {EB8A863E-0535-40A0-8345-ED290CBA7E24}
 		{7EC3B2F1-C377-4DA3-8ED7-E1AA35EAA128} = {EB8A863E-0535-40A0-8345-ED290CBA7E24}
+		{8D417D77-3EA4-44C3-975B-276CF01F8905} = {EB8A863E-0535-40A0-8345-ED290CBA7E24}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B1EA921C-810E-4716-A75C-C7E515900697}
