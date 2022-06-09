@@ -13,23 +13,10 @@ namespace Sample0607 {
         public Form1() {
             InitializeComponent();
         }
-        private void label1_Click(object sender, EventArgs e) {
 
-        }
-
-        private void button2_Click(object sender, EventArgs e) {
-
-            if(tbNum2.Text == 0.ToString()){
-                MessageBox.Show("計算できない","エラー",MessageBoxButtons.OK,MessageBoxIcon.Error);
-
-            } else {
-                nudAns.Value = nudNum1.Value / nudNum2.Value;
-                nudMod.Value = nudNum1.Value % nudNum2.Value;
-            }
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e) {
-
+        private void dt_Random_Click(object sender, EventArgs e) {
+            var rand = new Random();
+            Number.Value = rand.Next(minValue:(int)nudMin.Value,maxValue:(int)nudMax.Value + 1);
         }
     }
 }
