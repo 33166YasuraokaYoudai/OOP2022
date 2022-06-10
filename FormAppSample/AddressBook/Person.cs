@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 namespace AddressBook {
     public class Person {
 
-        [System.ComponentModel.DisplayName("名前")]
         //名前
+        [System.ComponentModel.DisplayName("名前")]
         public string Name { get; set; }
 
         //メールアドレス

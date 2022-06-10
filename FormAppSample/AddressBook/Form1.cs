@@ -35,12 +35,74 @@ namespace AddressBook {
                 Address = tbAddress.Text,
                 Company = tbCompany.Text,
                 Picture = pbPicture.Image,
+                listgroup = getCheckBoxGroup(),
+
             };
             listPerson.Add(newPerson);
         }
 
+        //チェックボックスにセットされている値をリストとして取り出す
+        private List<Person.GroupType> getCheckBoxGroup() {
+            var listgroup = new List<Person.GroupType>();
+
+            if(cbFamily.Checked)   {
+                listgroup.Add(Person.GroupType.家族);
+            }
+            if(cbFriend.Checked) {
+                listgroup.Add(Person.GroupType.友人);
+            }
+            if(cbWork.Checked) {
+                listgroup.Add(Person.GroupType.仕事);
+            }
+            if(cbOther.Checked) {
+                listgroup.Add(Person.GroupType.その他);
+            }
+
+            return listgroup;
+        }
+
+
         private void btPictureClear_Click(object sender, EventArgs e) {
             pbPicture.Image = null;
+        }
+
+        //データグリッドビューをクリックした時のイベントハンドラ
+        private void dgvPersons_Click(object sender, EventArgs e) {
+             
+            var getIndex = dgvPersons.CurrentRow.Index;
+
+            tbName.Text = listPerson[getIndex].Name;
+            tbMailAddress.Text = listPerson[getIndex].MailAddress;
+            tbAddress.Text = listPerson[getIndex].Address;
+            tbCompany.Text = listPerson[getIndex].Company;
+            pbPicture.Image = listPerson[getIndex].Picture;
+
+            cbFamily.Checked = false;
+            cbFriend.Checked = false;
+            cbWork.Checked = false;
+            cbOther.Checked = false;
+
+
+
+            foreach (var group in listPerson[getIndex].listgroup) {
+
+                switch (group) {
+                    case Person.GroupType.家族:
+                        cbFamily.Checked = true;
+                        break;
+                    case Person.GroupType.友人:
+                        cbFriend.Checked = true;
+                        break;
+                    case Person.GroupType.仕事:
+                        cbWork.Checked = true;
+                        break;
+                    case Person.GroupType.その他:
+                        cbOther.Checked = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }
