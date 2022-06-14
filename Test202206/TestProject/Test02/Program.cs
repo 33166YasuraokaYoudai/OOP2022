@@ -38,8 +38,6 @@ namespace Test02 {
         private static void Exercise01(List<int> numbers) {
             var MaxNum = numbers.Sum();
             Console.WriteLine(MaxNum);
-
-
         }
 
         //問題２　偶数の最大値を表示
@@ -47,8 +45,6 @@ namespace Test02 {
         private static void Exercise02(List<int> numbers) {
             var num = numbers.Where(s => s % 2 == 0);
             Console.WriteLine(num.Max());
-
-
         }
         //問題３　昇順に並べて表示（遅延実行とする）
         //　　　　出力結果【12 14 17 20 31 35 40 48 53 76 87 91 94】
