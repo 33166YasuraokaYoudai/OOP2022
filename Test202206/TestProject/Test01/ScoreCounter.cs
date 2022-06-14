@@ -34,7 +34,6 @@ namespace Test01 {
                     dict[score.Subject] += score.Score;
                 else
                     dict[score.Subject] = score.Score;
-
             }
             return dict;
         }
