@@ -39,6 +39,7 @@ namespace AddressBook {
 
             };
             listPerson.Add(newPerson);
+            
         }
 
 
@@ -101,7 +102,18 @@ namespace AddressBook {
                         break;
                 }
             }
-
+            
+            if (listPerson.Count == 0) {
+                btUpdate.Enabled = false;
+                bt_Delete.Enabled = false;
+                btPictureClear.Enabled = false;
+               
+            } else {
+                bt_Delete.Enabled = true;
+                btUpdate.Enabled = true;
+                btPictureClear.Enabled = false;
+            }
+            
         }
         //グループのチェックボックスをオールクリア
         private void groupCheckBoxAllClear() {
@@ -129,6 +141,19 @@ namespace AddressBook {
         private void bt_Delete_Click(object sender, EventArgs e) {
             var getIndex = dgvPersons.CurrentRow.Index;
             listPerson.RemoveAt(getIndex);
+
+            Check();
+
+        }
+
+        private void Check() {
+            if (listPerson.Count == 0) {
+                bt_Delete.Enabled = false;
+                btUpdate.Enabled = false;
+            } else {
+                bt_Delete.Enabled = true;
+                btUpdate.Enabled = true;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -136,5 +161,6 @@ namespace AddressBook {
             btUpdate.Enabled = false;
             btPictureClear.Enabled = false;
         }
+        
     }
 }
