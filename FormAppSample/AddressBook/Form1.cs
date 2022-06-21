@@ -39,13 +39,13 @@ namespace AddressBook {
 
             Person newPerson = new Person {
                 Name = tbName.Text,
-                MailAddress = tbMailAddress.Text,
+                MailAddress = tbTelNumber.Text,
                 Address = tbAddress.Text,
                 Company = cbCompnay.Text,
                 Picture = pbPicture.Image,
                 listgroup = getCheckBoxGroup(),
                 Registration = dtp.Value,
-
+                TelNumber = tbTelNumber.Text,
             };
             listPerson.Add(newPerson);
             Check();
@@ -77,11 +77,8 @@ namespace AddressBook {
             if(cbOther.Checked) {
                 listgroup.Add(Person.GroupType.その他);
             }
-
             return listgroup;
         }
-
-
         private void btPictureClear_Click(object sender, EventArgs e) {
             pbPicture.Image = null;
         }
@@ -94,12 +91,14 @@ namespace AddressBook {
             var getIndex = dgvPersons.CurrentRow.Index;
 
             tbName.Text = listPerson[getIndex].Name;
-            tbMailAddress.Text = listPerson[getIndex].MailAddress;
+            tbTelNumber.Text = listPerson[getIndex].MailAddress;
             tbAddress.Text = listPerson[getIndex].Address;
             cbCompnay.Text = listPerson[getIndex].Company;
             pbPicture.Image = listPerson[getIndex].Picture;
             dtp.Value =
                 listPerson[getIndex].Registration.Year > 1900 ? listPerson[getIndex].Registration : DateTime.Today;
+            tbTelNumber.Text = listPerson[getIndex].TelNumber;
+            
 
             groupCheckBoxAllClear();//チェックボックス初期化
 
@@ -137,12 +136,13 @@ namespace AddressBook {
             var getIndex = dgvPersons.CurrentRow.Index;
             
             listPerson[getIndex].Name = tbName.Text;
-            listPerson[getIndex].MailAddress = tbMailAddress.Text;
+            listPerson[getIndex].MailAddress = tbTelNumber.Text;
             listPerson[getIndex].Address = tbAddress.Text;
             listPerson[getIndex].Company = cbCompnay.Text;
             listPerson[getIndex].Picture = pbPicture.Image;
             listPerson[getIndex].listgroup = getCheckBoxGroup();
             listPerson[getIndex].Registration = dtp.Value;
+            listPerson[getIndex].TelNumber = tbTelNumber.Text;
             dgvPersons.Refresh();//データグリッドビュー更新
    
         }
@@ -206,7 +206,5 @@ namespace AddressBook {
             }
             EnabledCheck();
         }
-
-       
     }
 }
