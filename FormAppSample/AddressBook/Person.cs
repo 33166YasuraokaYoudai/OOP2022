@@ -25,6 +25,17 @@ namespace AddressBook {
         [System.ComponentModel.DisplayName("会社")]
         public string Company { get; set; }
 
+        //グループ表示
+        [System.ComponentModel.DisplayName("グループ")]
+        public string Group {
+            get {
+                string groups = "";
+                foreach (GroupType group in listgroup) {
+                    groups += "[" + group + "]";
+                }
+                return groups;
+            }
+        }
         //グループ
         public List< GroupType >  listgroup{ get; set; }
 

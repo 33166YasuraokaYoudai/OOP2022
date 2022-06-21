@@ -44,6 +44,7 @@ namespace AddressBook {
                 Company = cbCompnay.Text,
                 Picture = pbPicture.Image,
                 listgroup = getCheckBoxGroup(),
+                Registration = dtp.Value,
 
             };
             listPerson.Add(newPerson);
@@ -97,6 +98,8 @@ namespace AddressBook {
             tbAddress.Text = listPerson[getIndex].Address;
             cbCompnay.Text = listPerson[getIndex].Company;
             pbPicture.Image = listPerson[getIndex].Picture;
+            dtp.Value =
+                listPerson[getIndex].Registration.Year > 1900 ? listPerson[getIndex].Registration : DateTime.Today;
 
             groupCheckBoxAllClear();//チェックボックス初期化
 
@@ -139,6 +142,7 @@ namespace AddressBook {
             listPerson[getIndex].Company = cbCompnay.Text;
             listPerson[getIndex].Picture = pbPicture.Image;
             listPerson[getIndex].listgroup = getCheckBoxGroup();
+            listPerson[getIndex].Registration = dtp.Value;
             dgvPersons.Refresh();//データグリッドビュー更新
    
         }
@@ -202,5 +206,7 @@ namespace AddressBook {
             }
             EnabledCheck();
         }
+
+       
     }
 }
