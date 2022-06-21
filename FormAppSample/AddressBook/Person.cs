@@ -28,6 +28,10 @@ namespace AddressBook {
         //グループ
         public List< GroupType >  listgroup{ get; set; }
 
+        //登録日
+        [System.ComponentModel.DisplayName("登録日")]
+        public DateTime Registration { get; set; }
+
         //画像
         [System.ComponentModel.DisplayName("画像")]
         public Image Picture { get; set; }

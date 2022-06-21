@@ -186,7 +186,7 @@ namespace AddressBook {
             // 
             // pbPicture
             // 
-            this.pbPicture.BackColor = System.Drawing.Color.SlateGray;
+            this.pbPicture.BackColor = System.Drawing.Color.DarkGray;
             this.pbPicture.Location = new System.Drawing.Point(613, 27);
             this.pbPicture.Name = "pbPicture";
             this.pbPicture.Size = new System.Drawing.Size(127, 161);
@@ -291,7 +291,7 @@ namespace AddressBook {
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(794, 527);
+            this.ClientSize = new System.Drawing.Size(794, 554);
             this.Controls.Add(this.btSave);
             this.Controls.Add(this.btOpen);
             this.Controls.Add(this.cbCompnay);

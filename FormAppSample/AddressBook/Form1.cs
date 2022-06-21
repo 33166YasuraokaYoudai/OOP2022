@@ -48,15 +48,15 @@ namespace AddressBook {
             };
             listPerson.Add(newPerson);
             Check();
-
+            EnabledCheck();
             setCbCompny(cbCompnay.Text);
 
         }
         //コンボボックスに会社名を登録(重複なし)
         private void setCbCompny(string company) {
-            if (!cbCompnay.Items.Contains(cbCompnay.Text)) {
+            if (!cbCompnay.Items.Contains(company)) {
                 //まだ登録されてない処理
-                cbCompnay.Items.Add(cbCompnay.Text);
+                cbCompnay.Items.Add(company);
             }
         }
 
@@ -119,18 +119,7 @@ namespace AddressBook {
                         break;
                 }
             }
-            
-            if (listPerson.Count == 0) {
-                btUpdate.Enabled = false;
-                bt_Delete.Enabled = false;
-                btPictureClear.Enabled = false;
-               
-            } else {
-                bt_Delete.Enabled = true;
-                btUpdate.Enabled = true;
-                btPictureClear.Enabled = false;
-            }
-            
+            EnabledCheck();
         }
         //グループのチェックボックスをオールクリア
         private void groupCheckBoxAllClear() {
@@ -139,7 +128,6 @@ namespace AddressBook {
             cbWork.Checked = false;
             cbOther.Checked = false;
         }
-
         //更新ボタンが押された時の処理
         private void btUpdate_Click(object sender, EventArgs e) {
 
@@ -154,33 +142,26 @@ namespace AddressBook {
             dgvPersons.Refresh();//データグリッドビュー更新
    
         }
-
+        //削除ボタンが押された時の処理
         private void bt_Delete_Click(object sender, EventArgs e) {
             var getIndex = dgvPersons.CurrentRow.Index;
             listPerson.RemoveAt(getIndex);
 
             Check();
-
+        }
+        private void Check() {
+            EnabledCheck();
         }
 
-        private void Check() {
-            if (listPerson.Count == 0) {
-                bt_Delete.Enabled = false;
-                btUpdate.Enabled = false;
-                btPictureClear.Enabled = false;
-            } else {
-                bt_Delete.Enabled = true;
-                btUpdate.Enabled = true;
-                btPictureClear.Enabled = true;
-            }
+        //更新・削除ボタン・のマスク処理を行う（判定）
+        private void EnabledCheck() {
+
+            btUpdate.Enabled = bt_Delete.Enabled = listPerson.Count() > 0 ? true : false;
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            bt_Delete.Enabled = false;
-            btUpdate.Enabled = false;
-            btPictureClear.Enabled = false;
+            EnabledCheck();
         }
-
         //保存ボタンのイベントハンドラ
         private void btSave_Click(object sender, EventArgs e) {
             if(sfdSaveDialog.ShowDialog() == DialogResult.OK) {
@@ -194,15 +175,12 @@ namespace AddressBook {
                 }
                 catch (Exception ex) {
                     MessageBox.Show(ex.Message);
-
                 }
-
             }
         }
-
         private void btOpen_Click(object sender, EventArgs e) {
             if (ofdFileOpenDialog.ShowDialog() == DialogResult.OK) {
-
+                cbCompnay.Items.Clear();
                 try {
                     //バイナリ形式で逆シリアル化
                     var bf = new BinaryFormatter();
@@ -212,20 +190,17 @@ namespace AddressBook {
                         listPerson = (BindingList<Person>)bf.Deserialize(fs);
                         dgvPersons.DataSource = null;
                         dgvPersons.DataSource = listPerson;
-
                     }
                 }
                 catch (Exception ex) {
                     MessageBox.Show(ex.Message);
-
                 }
-                foreach (var item in listPerson) {
-                    setCbCompny(item.Company);//存在する会社を登録
-
-                }
-                
-
+                //コンボボックスへ登録
+                foreach (var item in listPerson.Select(p => p.Company)) {
+                    setCbCompny(item);//存在する会社を登録
+                }              
             }
+            EnabledCheck();
         }
     }
 }
