@@ -15,7 +15,7 @@ namespace AddressBook {
 
         //住所データ管理用
         BindingList<Person> listPerson = new BindingList<Person>();
-             
+
 
         public Form1() {
             InitializeComponent();
@@ -23,10 +23,10 @@ namespace AddressBook {
         }
 
         private void btPictureOpen_Click(object sender, EventArgs e) {
-            if(ofdFileOpenDialog.ShowDialog() == DialogResult.OK) {
+            if (ofdFileOpenDialog.ShowDialog() == DialogResult.OK) {
                 pbPicture.Image = Image.FromFile(ofdFileOpenDialog.FileName);
             }
-            
+
         }
 
         private void btAddPerson_Click(object sender, EventArgs e) {
@@ -37,30 +37,41 @@ namespace AddressBook {
                 return;
             }
 
-            Person newPerson = new Person {
-                Name = tbName.Text,
-                MailAddress = tbTelNumber.Text,
-                Address = tbAddress.Text,
-                Company = cbCompnay.Text,
-                Picture = pbPicture.Image,
-                listgroup = getCheckBoxGroup(),
-                Registration = dtp.Value,
-                TelNumber = tbTelNumber.Text,
-            };
+            Person newPerson = GetNewPerson();
             listPerson.Add(newPerson);
             Check();
             EnabledCheck();
             setCbCompny(cbCompnay.Text);
 
         }
-        //コンボボックスに会社名を登録(重複なし)
-        private void setCbCompny(string company) {
-            if (!cbCompnay.Items.Contains(company)) {
-                //まだ登録されてない処理
-                cbCompnay.Items.Add(company);
-            }
+
+        private Person GetNewPerson() {
+            return new Person {
+                Name = tbName.Text,
+                MailAddress = tbMailAddress.Text,
+                Address = tbAddress.Text,
+                Company = cbCompnay.Text,
+                Picture = pbPicture.Image,
+                listgroup = getCheckBoxGroup(),
+                Registration = dtp.Value,
+                KindNumber = GetRadioButtonKindNumber(),
+                TelNumber = tbTelNumber.Text,
+            };
         }
 
+        private Person.KindNumberType GetRadioButtonKindNumber() {
+
+            Person.KindNumberType selectedKindNumber = Person.KindNumberType.その他;
+
+            if (rbHome.Checked) { //自宅にチェックがついている
+                return Person.KindNumberType.自宅;
+            }
+            if (rbCellPhone.Checked) { //携帯にチェックがついている
+                return Person.KindNumberType.携帯;
+            }
+            return selectedKindNumber;
+        }
+        
         //チェックボックスにセットされている値をリストとして取り出す
         private List<Person.GroupType> getCheckBoxGroup() {
             var listgroup = new List<Person.GroupType>();
@@ -91,17 +102,39 @@ namespace AddressBook {
             var getIndex = dgvPersons.CurrentRow.Index;
 
             tbName.Text = listPerson[getIndex].Name;
-            tbTelNumber.Text = listPerson[getIndex].MailAddress;
+            tbMailAddress.Text = listPerson[getIndex].MailAddress;
             tbAddress.Text = listPerson[getIndex].Address;
             cbCompnay.Text = listPerson[getIndex].Company;
             pbPicture.Image = listPerson[getIndex].Picture;
             dtp.Value =
                 listPerson[getIndex].Registration.Year > 1900 ? listPerson[getIndex].Registration : DateTime.Today;
             tbTelNumber.Text = listPerson[getIndex].TelNumber;
-            
+
 
             groupCheckBoxAllClear();//チェックボックス初期化
 
+            ListGroupCheck(getIndex);//グループを設定
+
+            RadioButtonCheck(getIndex);//番号種別を設定
+        }
+
+        private void RadioButtonCheck(int getIndex) {
+            //番号種別チェック処理
+            switch (listPerson[getIndex].KindNumber) {
+                case Person.KindNumberType.自宅:
+                    rbHome.Checked = true;
+                    break;
+                case Person.KindNumberType.携帯:
+                    rbCellPhone.Checked = true;
+                    break;
+                case Person.KindNumberType.その他:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void ListGroupCheck(int getIndex) {
             foreach (var group in listPerson[getIndex].listgroup) {
 
                 switch (group) {
@@ -121,8 +154,10 @@ namespace AddressBook {
                         break;
                 }
             }
-            EnabledCheck();
         }
+
+
+
         //グループのチェックボックスをオールクリア
         private void groupCheckBoxAllClear() {
             cbFamily.Checked = false;
@@ -143,6 +178,8 @@ namespace AddressBook {
             listPerson[getIndex].listgroup = getCheckBoxGroup();
             listPerson[getIndex].Registration = dtp.Value;
             listPerson[getIndex].TelNumber = tbTelNumber.Text;
+            listPerson[getIndex].KindNumber = GetRadioButtonKindNumber();
+
             dgvPersons.Refresh();//データグリッドビュー更新
    
         }
@@ -205,6 +242,14 @@ namespace AddressBook {
                 }              
             }
             EnabledCheck();
+        }
+        //コンボボックスに会社名を登録(重複なし)
+        private void setCbCompny(string company) {
+            if (!cbCompnay.Items.Contains(company)) {
+                //まだ登録されてない処理
+                cbCompnay.Items.Add(company);
+            }
+
         }
     }
 }

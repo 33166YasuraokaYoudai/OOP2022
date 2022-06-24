@@ -43,7 +43,7 @@ namespace AddressBook {
         public string TelNumber { get; set; }
         //種別
         [System.ComponentModel.DisplayName("番号種別")]
-        public string KindNumber { get; set; }
+        public KindNumberType KindNumber { get; set; }
         //登録日
         [System.ComponentModel.DisplayName("登録日")]
         public DateTime Registration { get; set; }
@@ -56,7 +56,7 @@ namespace AddressBook {
             家族, 友人, 仕事, その他
         }
         public enum KindNumberType {
-            自宅,携帯
+            自宅,携帯,その他
         }
     }
 }

@@ -51,13 +51,13 @@ namespace AddressBook {
             this.label6 = new System.Windows.Forms.Label();
             this.dtp = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbHome = new System.Windows.Forms.RadioButton();
+            this.gbKindNumber = new System.Windows.Forms.GroupBox();
             this.rbCellPhone = new System.Windows.Forms.RadioButton();
+            this.rbHome = new System.Windows.Forms.RadioButton();
             this.tbMailAddress = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.gbKindNumber.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -111,7 +111,7 @@ namespace AddressBook {
             this.dgvPersons.ReadOnly = true;
             this.dgvPersons.RowTemplate.Height = 21;
             this.dgvPersons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPersons.Size = new System.Drawing.Size(647, 145);
+            this.dgvPersons.Size = new System.Drawing.Size(718, 145);
             this.dgvPersons.TabIndex = 1;
             this.dgvPersons.Click += new System.EventHandler(this.dgvPersons_Click);
             // 
@@ -256,7 +256,7 @@ namespace AddressBook {
             // 
             this.bt_Delete.BackColor = System.Drawing.Color.Red;
             this.bt_Delete.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.bt_Delete.Location = new System.Drawing.Point(746, 480);
+            this.bt_Delete.Location = new System.Drawing.Point(762, 280);
             this.bt_Delete.Name = "bt_Delete";
             this.bt_Delete.Size = new System.Drawing.Size(49, 62);
             this.bt_Delete.TabIndex = 7;
@@ -299,7 +299,7 @@ namespace AddressBook {
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label6.Location = new System.Drawing.Point(472, 553);
+            this.label6.Location = new System.Drawing.Point(472, 563);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 16);
             this.label6.TabIndex = 10;
@@ -308,7 +308,7 @@ namespace AddressBook {
             // dtp
             // 
             this.dtp.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.dtp.Location = new System.Drawing.Point(540, 548);
+            this.dtp.Location = new System.Drawing.Point(540, 558);
             this.dtp.Name = "dtp";
             this.dtp.Size = new System.Drawing.Size(200, 23);
             this.dtp.TabIndex = 11;
@@ -323,16 +323,26 @@ namespace AddressBook {
             this.label7.TabIndex = 0;
             this.label7.Text = "電話番号";
             // 
-            // groupBox1
+            // gbKindNumber
             // 
-            this.groupBox1.Controls.Add(this.rbCellPhone);
-            this.groupBox1.Controls.Add(this.rbHome);
-            this.groupBox1.Location = new System.Drawing.Point(185, 302);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(121, 43);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "種別";
+            this.gbKindNumber.Controls.Add(this.rbCellPhone);
+            this.gbKindNumber.Controls.Add(this.rbHome);
+            this.gbKindNumber.Location = new System.Drawing.Point(185, 302);
+            this.gbKindNumber.Name = "gbKindNumber";
+            this.gbKindNumber.Size = new System.Drawing.Size(121, 43);
+            this.gbKindNumber.TabIndex = 12;
+            this.gbKindNumber.TabStop = false;
+            this.gbKindNumber.Text = "種別";
+            // 
+            // rbCellPhone
+            // 
+            this.rbCellPhone.AutoSize = true;
+            this.rbCellPhone.Location = new System.Drawing.Point(60, 19);
+            this.rbCellPhone.Name = "rbCellPhone";
+            this.rbCellPhone.Size = new System.Drawing.Size(47, 16);
+            this.rbCellPhone.TabIndex = 0;
+            this.rbCellPhone.Text = "携帯";
+            this.rbCellPhone.UseVisualStyleBackColor = true;
             // 
             // rbHome
             // 
@@ -345,16 +355,6 @@ namespace AddressBook {
             this.rbHome.TabStop = true;
             this.rbHome.Text = "自宅";
             this.rbHome.UseVisualStyleBackColor = true;
-            // 
-            // rbCellPhone
-            // 
-            this.rbCellPhone.AutoSize = true;
-            this.rbCellPhone.Location = new System.Drawing.Point(60, 19);
-            this.rbCellPhone.Name = "rbCellPhone";
-            this.rbCellPhone.Size = new System.Drawing.Size(47, 16);
-            this.rbCellPhone.TabIndex = 0;
-            this.rbCellPhone.Text = "携帯";
-            this.rbCellPhone.UseVisualStyleBackColor = true;
             // 
             // tbMailAddress
             // 
@@ -369,8 +369,8 @@ namespace AddressBook {
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(799, 583);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(847, 593);
+            this.Controls.Add(this.gbKindNumber);
             this.Controls.Add(this.dtp);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btSave);
@@ -402,8 +402,8 @@ namespace AddressBook {
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersons)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbKindNumber.ResumeLayout(false);
+            this.gbKindNumber.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -438,7 +438,7 @@ namespace AddressBook {
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dtp;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbKindNumber;
         private System.Windows.Forms.RadioButton rbCellPhone;
         private System.Windows.Forms.RadioButton rbHome;
         private System.Windows.Forms.TextBox tbMailAddress;
