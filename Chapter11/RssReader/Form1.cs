@@ -49,20 +49,24 @@ namespace RssReader {
             wvBrowser.GoBack();
         }
 
-        private void btForward_Click(object sender, EventArgs e) {
-            wvBrowser.GoForward();
-        }
-
         private void Form1_Load(object sender, EventArgs e) {
-            
-            btBack.Enabled = wvBrowser.CanGoBack;
-            btForward.Enabled = wvBrowser.CanGoForward;
+
+            BackForwadButtonMaskCheck();
 
         }
 
         private void wvBrowser_NavigationCompleted(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNavigationCompletedEventArgs e) {
+            BackForwadButtonMaskCheck();
+        }
+
+        //進む・戻るボタンのマスク処理
+        private void BackForwadButtonMaskCheck() {
             btBack.Enabled = wvBrowser.CanGoBack;
             btForward.Enabled = wvBrowser.CanGoForward;
+        }
+
+        private void btForward_Click(object sender, EventArgs e) {
+            wvBrowser.GoForward();
         }
     }
 }

@@ -56,11 +56,13 @@ namespace RssReader {
             // 
             // lbRssTitle
             // 
+            this.lbRssTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.lbRssTitle.FormattingEnabled = true;
             this.lbRssTitle.ItemHeight = 12;
-            this.lbRssTitle.Location = new System.Drawing.Point(21, 71);
+            this.lbRssTitle.Location = new System.Drawing.Point(12, 71);
             this.lbRssTitle.Name = "lbRssTitle";
-            this.lbRssTitle.Size = new System.Drawing.Size(365, 712);
+            this.lbRssTitle.Size = new System.Drawing.Size(374, 712);
             this.lbRssTitle.TabIndex = 2;
             this.lbRssTitle.SelectedIndexChanged += new System.EventHandler(this.lbRssTitle_SelectedIndexChanged);
             // 
@@ -76,9 +78,9 @@ namespace RssReader {
             // 
             // btBack
             // 
-            this.btBack.Location = new System.Drawing.Point(767, 28);
+            this.btBack.Location = new System.Drawing.Point(767, 12);
             this.btBack.Name = "btBack";
-            this.btBack.Size = new System.Drawing.Size(75, 23);
+            this.btBack.Size = new System.Drawing.Size(52, 39);
             this.btBack.TabIndex = 4;
             this.btBack.Text = "←";
             this.btBack.UseVisualStyleBackColor = true;
@@ -86,9 +88,9 @@ namespace RssReader {
             // 
             // btForward
             // 
-            this.btForward.Location = new System.Drawing.Point(848, 28);
+            this.btForward.Location = new System.Drawing.Point(825, 12);
             this.btForward.Name = "btForward";
-            this.btForward.Size = new System.Drawing.Size(75, 23);
+            this.btForward.Size = new System.Drawing.Size(50, 39);
             this.btForward.TabIndex = 4;
             this.btForward.Text = "→";
             this.btForward.UseVisualStyleBackColor = true;
@@ -96,6 +98,9 @@ namespace RssReader {
             // 
             // wvBrowser
             // 
+            this.wvBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.wvBrowser.Location = new System.Drawing.Point(401, 71);
             this.wvBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.wvBrowser.Name = "wvBrowser";
@@ -108,7 +113,7 @@ namespace RssReader {
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(940, 800);
+            this.ClientSize = new System.Drawing.Size(927, 800);
             this.Controls.Add(this.wvBrowser);
             this.Controls.Add(this.btForward);
             this.Controls.Add(this.btBack);
