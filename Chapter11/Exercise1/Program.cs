@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace Exercise1 {
     class Program {
         static void Main(string[] args) {
 
-            var file = "sample.xml";
+            var file = "sports.xml";
             Exercise1_1(file);
             Console.WriteLine();
             Exercise1_2(file);
@@ -18,7 +19,11 @@ namespace Exercise1 {
             Console.WriteLine();
 
             var newfile = "sports.xml";
-            Exercise1_4(file, newfile);
+            //Exercise1_4(file, newfile);
+
+            //確認用
+            var text = File.ReadAllText(newfile);
+            Console.WriteLine(text);
         }
 
         private static void Exercise1_1(string file) {
@@ -37,21 +42,32 @@ namespace Exercise1 {
             var xdoc = XDocument.Load(file);
             var xSample = xdoc.Root.Elements()
                                        .Select(a => new {
-                                           Name = (string)a.Attribute("kanji"),
+                                           Name = (string)a.Element("name").Attribute("kanji"),
                                            Start = (string)a.Element("firstplayed"),
-                                       });
-            foreach (var item in xdoc.Root.Elements()) {
-                
-                Console.WriteLine("{0} ({1})",item.Name,item);
+                                       }).OrderBy(a => a.Start);
+            foreach (var item in xSample) {
+                Console.WriteLine("{0} ({1})",item.Name,item.Start);
             }
         }
 
         private static void Exercise1_3(string file) {
-           
+            var xdoc = XDocument.Load(file);
+            var xSample = xdoc.Root.Elements()
+                                      .Select(a => new {
+                                          Name = (string)a.Element("name"),
+                                          Team = (string)a.Element("teammembers"),
+                                      }).OrderByDescending(a => int.Parse(a.Team)).FirstOrDefault();
+            Console.WriteLine("{0} ({1})",xSample.Name,xSample.Team);
         }
-
         private static void Exercise1_4(string file, string newfile) {
-          
+            var sports = new XElement("ballsport",
+                            new XElement("name", "サッカー", new XAttribute("kanji", "蹴球")),
+                            new XElement("teammembers", "11"),
+                            new XElement("firstplayed", "1863")
+                        );
+            var xdoc = XDocument.Load(file);
+            xdoc.Root.Add(sports);
+            xdoc.Save(newfile);
         }
     }
 }
