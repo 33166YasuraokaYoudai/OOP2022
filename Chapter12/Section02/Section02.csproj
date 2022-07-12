@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{87E0C63A-7AAD-4370-A5C3-8000CA2C0D25}</ProjectGuid>
+    <ProjectGuid>{DAE66341-BC35-4016-863B-3C07EEB6539F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Section01</RootNamespace>
-    <AssemblyName>Section01</AssemblyName>
+    <RootNamespace>Section02</RootNamespace>
+    <AssemblyName>Section02</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -35,7 +35,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />

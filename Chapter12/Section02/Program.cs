@@ -1,27 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
-using System.Runtime.Serialization;
 using System.Xml.Serialization;
-using System.IO;
 
-namespace Section01 {
+
+namespace Section02 {
+
+    [XmlRoot("novels")]
+    public class NovelCollection {
+        [XmlElement(Type = typeof(Novel),ElementName = "novel")]
+        public Novel[] Novels { get; set;}
+    }
+
     class Program {
         static void Main(string[] args) {
-            //Serialize();
+            //SerializeToFile();
             Deserialize();
-            
         }
-        //List 12-2
-        //シリアル化
-        public static void Serialize() {
-            //var novel = new Novel {
-            //    Author = "ジェイムズ・P・ホーガン",
-            //    Title = "星を継ぐもの",
-            //    Published = 1977,
+        //List 12-6
+        public static void SerializeToFile() {
+            //var novel = new novel {
+            //    author = "ジェイムズ・p・ホーガン",
+            //    title = "星を継ぐもの",
+            //    published = 1977,
             //};
 
             var novels = new Novel[] {
@@ -37,31 +42,29 @@ namespace Section01 {
                },
             };
 
-            var settings = new XmlWriterSettings {
-                Encoding = new System.Text.UTF8Encoding(false),
-                Indent = true,
-                IndentChars = "  ",
+            var novelcollection = new NovelCollection {
+                Novels = novels
             };
-            using (var writer = XmlWriter.Create("novels.xml", settings)) {
-            //using (var writer = XmlWriter.Create("novel.xml")) {
-                var serializer = new DataContractSerializer(novels.GetType());
-                serializer.WriteObject(writer, novels);
+
+            using (var writer = XmlWriter.Create("novels.xml")) {
+                var serializer = new XmlSerializer(novelcollection.GetType());
+                serializer.Serialize(writer, novelcollection);
             }
 
             Display("novels.xml");
         }
 
-        //List 12-3
+        //List 12-7
         //逆シリアル化
         public static void Deserialize() {
             using (var reader = XmlReader.Create("novels.xml")) {
-                var serializer = new DataContractSerializer(typeof(Novel[]));
-                var novel = serializer.ReadObject(reader) as Novel[];
-                foreach (var item in novel) {
+                var serializer = new XmlSerializer(typeof(NovelCollection));
+                var novels = serializer.Deserialize(reader) as NovelCollection ;
+                // 以下、内容を確認するコード
+                foreach (var item in novels.Novels) {
                     Console.WriteLine(item);
                 }
                 
-
             }
         }
 
@@ -72,5 +75,6 @@ namespace Section01 {
                 Console.WriteLine(line);
 
         }
+
     }
 }

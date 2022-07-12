@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{87E0C63A-7AAD-4370-A5C3-8000CA2C0D25}</ProjectGuid>
+    <ProjectGuid>{6A363073-45AF-4675-B336-B0C268911B0F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Section01</RootNamespace>
-    <AssemblyName>Section01</AssemblyName>
+    <RootNamespace>Exercise02</RootNamespace>
+    <AssemblyName>Exercise02</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -44,12 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Novel.cs" />
+    <Compile Include="DataContractAttribute.cs" />
+    <Compile Include="Novelist.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Sample.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
