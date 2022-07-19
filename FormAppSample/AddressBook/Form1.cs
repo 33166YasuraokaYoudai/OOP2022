@@ -251,5 +251,9 @@ namespace AddressBook {
             }
 
         }
+
+        private void dgvPersons_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+
+        }
     }
 }
