@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
@@ -20,21 +21,11 @@ namespace CarReportSystem {
         public Form1() {
             InitializeComponent();
             dgv.DataSource = listPerson;
+            
         }
         
         private void btExit_Click(object sender, EventArgs e) {
             Application.Exit();
-        }
-        
-        private void Form1_Load(object sender, EventArgs e) {
-            EnabledCheck();
-            //逆シリアル化
-            using (XmlReader reader = XmlReader.Create("settings.xml")) {
-                var serializer = new DataContractSerializer(typeof(Settings));
-                var setcolor = serializer.ReadObject(reader) as Settings;
-                BackColor = setcolor.MainFormColor;
-                
-            }
         }
         
         //追加ボタンが押された時の処理
@@ -225,11 +216,13 @@ namespace CarReportSystem {
             }
         }
         
+        //マスク処理
         private void EnabledCheck() {
 
             btModify.Enabled = btDelete.Enabled = btPictureDelete.Enabled = listPerson.Count() > 0 ? true : false;
         }
         
+        //開く
         private void 開くToolStripMenuItem_Click(object sender, EventArgs e) {
             if (ofdFileOpenDialog.ShowDialog() == DialogResult.OK) {
                 cbCarName.Items.Clear();
@@ -252,6 +245,7 @@ namespace CarReportSystem {
             }
         }
        
+        //保存
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e) {
             if (sfdSaveDialog.ShowDialog() == DialogResult.OK) {
                 try {
@@ -271,28 +265,42 @@ namespace CarReportSystem {
             }
             EnabledCheck();
         }
-       
+
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
+            //シリアル化
+         
+            using (var write = XmlWriter.Create("settings.xml")) {
+                var serializer = new XmlSerializer(settings.GetType());
+                serializer.Serialize(write, settings);
+            }
+        }
+
+        
+        private void Form1_Load(object sender, EventArgs e) { 
+            //逆シリアル化
+            
+            using (var reader = XmlReader.Create("settings.xml")) {
+                var serializer = new XmlSerializer(typeof(int[]));
+                settings = serializer.Deserialize(reader) as Settings;
+                BackColor = Color.FromArgb(settings.MainFormColor);
+            }
+            EnabledCheck();
+        }
+
+        //色設定
         private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
             if (colorDialog1.ShowDialog() == DialogResult.OK) {
-                BackColor = colorDialog1.Color;
-                settings.MainFormColor = colorDialog1.Color; 
+                BackColor = colorDialog1.Color;//背景変更
+                settings.MainFormColor = colorDialog1.Color.ToArgb(); 
 
             }
         }
        
+        //終了
         private void 終了ToolStripMenuItem_Click(object sender, EventArgs e) {
             Application.Exit();
         }
-        
-        //シリアル化
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
-            using (var write = XmlWriter.Create("settings.xml")) {
-                var serializer = new DataContractSerializer(settings.GetType());
-                serializer.WriteObject(write, settings);
-            }
-        }
-
-       
 
         private void btPictureOpen_Click(object sender, EventArgs e) {
             if (ofdFileOpenDialog.ShowDialog() == DialogResult.OK) {
