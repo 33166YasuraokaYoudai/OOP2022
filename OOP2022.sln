@@ -105,6 +105,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Strategy", "Strategy", "{70
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistanceConverter", "Chapter17\Strategy\DistanceConverter\DistanceConverter.csproj", "{EE2D2F3A-02D3-496E-947C-F6C8EA1CABA9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ADONET", "ADONET", "{8CBF819D-DFE4-4DD5-A58B-60FA4EF94D8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateBaseSample", "ADONET\DateBaseSample\DateBaseSample.csproj", "{60CEE5B0-0896-4FC7-AF6E-95B589F60920}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -259,6 +263,10 @@ Global
 		{EE2D2F3A-02D3-496E-947C-F6C8EA1CABA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE2D2F3A-02D3-496E-947C-F6C8EA1CABA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE2D2F3A-02D3-496E-947C-F6C8EA1CABA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60CEE5B0-0896-4FC7-AF6E-95B589F60920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60CEE5B0-0896-4FC7-AF6E-95B589F60920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60CEE5B0-0896-4FC7-AF6E-95B589F60920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60CEE5B0-0896-4FC7-AF6E-95B589F60920}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -303,6 +311,7 @@ Global
 		{17E2DDA5-DAC5-4EF8-B98E-7640D0FC984F} = {25D620CF-B30E-47C3-9193-95C5A5FB3BAB}
 		{70567619-62D9-4A19-B5CB-9DE2B2B247EF} = {25D620CF-B30E-47C3-9193-95C5A5FB3BAB}
 		{EE2D2F3A-02D3-496E-947C-F6C8EA1CABA9} = {70567619-62D9-4A19-B5CB-9DE2B2B247EF}
+		{60CEE5B0-0896-4FC7-AF6E-95B589F60920} = {8CBF819D-DFE4-4DD5-A58B-60FA4EF94D8C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B1EA921C-810E-4716-A75C-C7E515900697}
