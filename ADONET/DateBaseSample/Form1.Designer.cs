@@ -27,36 +27,36 @@ namespace DateBaseSample {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.社員BindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.社員BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.infosys202214DataSet = new DateBaseSample.infosys202214DataSet();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.社員BindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.社員DataGridView = new System.Windows.Forms.DataGridView();
-            this.btConnect = new System.Windows.Forms.Button();
-            this.btSave = new System.Windows.Forms.Button();
-            this.btExecute = new System.Windows.Forms.Button();
-            this.tbValue = new System.Windows.Forms.TextBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.社員BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.infosys202214DataSet = new DateBaseSample.infosys202214DataSet();
+            this.btConnect = new System.Windows.Forms.Button();
+            this.btSave = new System.Windows.Forms.Button();
+            this.btExecute = new System.Windows.Forms.Button();
+            this.tbValue = new System.Windows.Forms.TextBox();
             this.社員TableAdapter = new DateBaseSample.infosys202214DataSetTableAdapters.社員TableAdapter();
             this.tableAdapterManager = new DateBaseSample.infosys202214DataSetTableAdapters.TableAdapterManager();
             ((System.ComponentModel.ISupportInitialize)(this.社員BindingNavigator)).BeginInit();
             this.社員BindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.社員DataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.社員BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.infosys202214DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.社員DataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // 社員BindingNavigator
@@ -89,6 +89,41 @@ namespace DateBaseSample {
             this.社員BindingNavigator.TabIndex = 0;
             this.社員BindingNavigator.Text = "bindingNavigator1";
             // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "新規追加";
+            // 
+            // 社員BindingSource
+            // 
+            this.社員BindingSource.DataMember = "社員";
+            this.社員BindingSource.DataSource = this.infosys202214DataSet;
+            // 
+            // infosys202214DataSet
+            // 
+            this.infosys202214DataSet.DataSetName = "infosys202214DataSet";
+            this.infosys202214DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(29, 22);
+            this.bindingNavigatorCountItem.Text = "/ {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "項目の総数";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "削除";
+            // 
             // bindingNavigatorMoveFirstItem
             // 
             this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -116,21 +151,15 @@ namespace DateBaseSample {
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "位置";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Yu Gothic UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "現在の場所";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(29, 22);
-            this.bindingNavigatorCountItem.Text = "/ {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "項目の総数";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -153,26 +182,8 @@ namespace DateBaseSample {
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "新規追加";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "削除";
             // 
             // 社員BindingNavigatorSaveItem
             // 
@@ -199,47 +210,6 @@ namespace DateBaseSample {
             this.社員DataGridView.Size = new System.Drawing.Size(761, 220);
             this.社員DataGridView.TabIndex = 1;
             // 
-            // btConnect
-            // 
-            this.btConnect.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btConnect.Location = new System.Drawing.Point(24, 314);
-            this.btConnect.Name = "btConnect";
-            this.btConnect.Size = new System.Drawing.Size(95, 34);
-            this.btConnect.TabIndex = 2;
-            this.btConnect.Text = "接続";
-            this.btConnect.UseVisualStyleBackColor = true;
-            this.btConnect.Click += new System.EventHandler(this.btConnect_Click);
-            // 
-            // btSave
-            // 
-            this.btSave.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btSave.Location = new System.Drawing.Point(147, 314);
-            this.btSave.Name = "btSave";
-            this.btSave.Size = new System.Drawing.Size(95, 34);
-            this.btSave.TabIndex = 3;
-            this.btSave.Text = "保存";
-            this.btSave.UseVisualStyleBackColor = true;
-            this.btSave.Click += new System.EventHandler(this.btSave_Click);
-            // 
-            // btExecute
-            // 
-            this.btExecute.Font = new System.Drawing.Font("MS UI Gothic", 18F);
-            this.btExecute.Location = new System.Drawing.Point(268, 314);
-            this.btExecute.Name = "btExecute";
-            this.btExecute.Size = new System.Drawing.Size(95, 34);
-            this.btExecute.TabIndex = 4;
-            this.btExecute.Text = "実行";
-            this.btExecute.UseVisualStyleBackColor = true;
-            this.btExecute.Click += new System.EventHandler(this.btExecute_Click);
-            // 
-            // tbValue
-            // 
-            this.tbValue.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbValue.Location = new System.Drawing.Point(388, 321);
-            this.tbValue.Name = "tbValue";
-            this.tbValue.Size = new System.Drawing.Size(136, 26);
-            this.tbValue.TabIndex = 5;
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "社員番号";
@@ -264,15 +234,46 @@ namespace DateBaseSample {
             this.dataGridViewTextBoxColumn4.HeaderText = "給料";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
-            // 社員BindingSource
+            // btConnect
             // 
-            this.社員BindingSource.DataMember = "社員";
-            this.社員BindingSource.DataSource = this.infosys202214DataSet;
+            this.btConnect.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btConnect.Location = new System.Drawing.Point(12, 298);
+            this.btConnect.Name = "btConnect";
+            this.btConnect.Size = new System.Drawing.Size(95, 34);
+            this.btConnect.TabIndex = 2;
+            this.btConnect.Text = "接続";
+            this.btConnect.UseVisualStyleBackColor = true;
+            this.btConnect.Click += new System.EventHandler(this.btConnect_Click);
             // 
-            // infosys202214DataSet
+            // btSave
             // 
-            this.infosys202214DataSet.DataSetName = "infosys202214DataSet";
-            this.infosys202214DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.btSave.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btSave.Location = new System.Drawing.Point(146, 298);
+            this.btSave.Name = "btSave";
+            this.btSave.Size = new System.Drawing.Size(95, 34);
+            this.btSave.TabIndex = 3;
+            this.btSave.Text = "保存";
+            this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
+            // 
+            // btExecute
+            // 
+            this.btExecute.Font = new System.Drawing.Font("MS UI Gothic", 18F);
+            this.btExecute.Location = new System.Drawing.Point(304, 298);
+            this.btExecute.Name = "btExecute";
+            this.btExecute.Size = new System.Drawing.Size(95, 34);
+            this.btExecute.TabIndex = 4;
+            this.btExecute.Text = "実行";
+            this.btExecute.UseVisualStyleBackColor = true;
+            this.btExecute.Click += new System.EventHandler(this.btExecute_Click);
+            // 
+            // tbValue
+            // 
+            this.tbValue.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tbValue.Location = new System.Drawing.Point(405, 305);
+            this.tbValue.Name = "tbValue";
+            this.tbValue.Size = new System.Drawing.Size(136, 26);
+            this.tbValue.TabIndex = 5;
             // 
             // 社員TableAdapter
             // 
@@ -301,9 +302,9 @@ namespace DateBaseSample {
             ((System.ComponentModel.ISupportInitialize)(this.社員BindingNavigator)).EndInit();
             this.社員BindingNavigator.ResumeLayout(false);
             this.社員BindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.社員DataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.社員BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.infosys202214DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.社員DataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
