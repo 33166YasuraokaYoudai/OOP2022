@@ -32,6 +32,8 @@ namespace AddressBoook {
         }
 
         private void addressTableDataGridView_Click(object sender, EventArgs e) {
+            if (addressTableDataGridView.CurrentRow == null)
+                return;
             //データグリッドビューの選択レコードを各テキストボックスへ設定
             tbName.Text = addressTableDataGridView.CurrentRow.Cells[1].Value.ToString();
             tbAddress.Text = addressTableDataGridView.CurrentRow.Cells[2].Value.ToString();
@@ -39,6 +41,10 @@ namespace AddressBoook {
             tbMail.Text = addressTableDataGridView.CurrentRow.Cells[4].Value.ToString();
             tbMemo.Text = addressTableDataGridView.CurrentRow.Cells[5].Value.ToString();
 
+            if (!(addressTableDataGridView.CurrentRow.Cells[6].Value is DBNull))
+                pbImage.Image = ByteArrayToImage((byte[])addressTableDataGridView.CurrentRow.Cells[6].Value);
+            else
+                pbImage.Image = null;
         }
 
         private void btUpdate_Click(object sender, EventArgs e) {
@@ -77,6 +83,25 @@ namespace AddressBoook {
             byte[] b = (byte[])imgconv.ConvertTo(img, typeof(byte[]));
             return b;
         }
+        
+        //エラー回避
+        private void addressTableDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e) {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+            this.addressTableTableAdapter.FillByName(this.infosys202214DataSet.AddressTable,tbNameSerch.Text);
+        }
+
+        private void btAdd_Click(object sender, EventArgs e) {
+            DataRow newRow = infosys202214DataSet.AddressTable.NewRow();
+            newRow[1] = tbName.Text;
+            newRow[2] = tbAddress.Text;
+
+            //データセットへ新しいレコードを追加
+            infosys202214DataSet.AddressTable.Rows.Add(newRow);
+            //データベース更新
+            this.addressTableTableAdapter.Update(this.infosys202214DataSet.AddressTable);
+        }
     }
 }
