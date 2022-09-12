@@ -62,6 +62,7 @@ namespace AddressBoook {
         }
 
         private void btImageOpen_Click(object sender, EventArgs e) {
+            ofdImage.Filter = "画像ファイル(*.jpg; *.png; *.bmp)| *.jpg; *.png; *.bmp";
             if (ofdImage.ShowDialog() == DialogResult.OK) {
                 pbImage.Image = System.Drawing.Image.FromFile(ofdImage.FileName);
             }
@@ -97,11 +98,38 @@ namespace AddressBoook {
             DataRow newRow = infosys202214DataSet.AddressTable.NewRow();
             newRow[1] = tbName.Text;
             newRow[2] = tbAddress.Text;
+            newRow[3] = tbTel.Text;
+            newRow[4] = tbMail.Text;
+            newRow[5] = tbMemo.Text;
+            newRow[6] = ImageToByteArray(pbImage.Image);
 
             //データセットへ新しいレコードを追加
             infosys202214DataSet.AddressTable.Rows.Add(newRow);
             //データベース更新
             this.addressTableTableAdapter.Update(this.infosys202214DataSet.AddressTable);
+        }
+
+        private void btClear_Click(object sender, EventArgs e) {
+            tbName.Text = null;
+            tbAddress.Text = null;
+            tbTel.Text = null;
+            tbMail.Text = null;
+            tbMemo.Text = null;
+            pbImage.Image = null;
+
+        }
+
+        private void データベース接続ToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.addressTableTableAdapter.Fill(this.infosys202214DataSet.AddressTable);
+
+        }
+
+        private void バージョン情報ToolStripMenuItem_Click(object sender, EventArgs e) {
+            new Version().ShowDialog();
+        }
+
+        private void 終了XAltF4ToolStripMenuItem_Click(object sender, EventArgs e) {
+            Application.Exit();
         }
     }
 }
