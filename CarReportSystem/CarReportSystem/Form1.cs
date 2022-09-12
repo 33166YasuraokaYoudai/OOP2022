@@ -276,6 +276,8 @@ namespace CarReportSystem {
             }
         }
         private void Form1_Load(object sender, EventArgs e) {
+            // TODO: このコード行はデータを 'infosys202214DataSet.CarReportDB' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            this.carReportDBTableAdapter.Fill(this.infosys202214DataSet.CarReportDB);
 
             EnabledCheck();//マスク処理呼び出し
             //逆シリアル化
@@ -309,6 +311,13 @@ namespace CarReportSystem {
                 pbPicture.Image = Image.FromFile(ofdFileOpenDialog.FileName);
 
             }
+        }
+
+        private void carReportDBBindingNavigatorSaveItem_Click(object sender, EventArgs e) {
+            this.Validate();
+            this.carReportDBBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202214DataSet);
+
         }
     }
 }
