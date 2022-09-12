@@ -51,7 +51,6 @@ namespace CarReportSystem {
             this.btOpen = new System.Windows.Forms.Button();
             this.btSave = new System.Windows.Forms.Button();
             this.btExit = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
             this.ofdFileOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.sfdSaveDialog = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -231,7 +230,7 @@ namespace CarReportSystem {
             // 
             // pbPicture
             // 
-            this.pbPicture.BackColor = System.Drawing.Color.Aqua;
+            this.pbPicture.BackColor = System.Drawing.Color.PowderBlue;
             this.pbPicture.Location = new System.Drawing.Point(512, 61);
             this.pbPicture.Name = "pbPicture";
             this.pbPicture.Size = new System.Drawing.Size(235, 214);
@@ -331,17 +330,6 @@ namespace CarReportSystem {
             this.btExit.UseVisualStyleBackColor = true;
             this.btExit.Click += new System.EventHandler(this.btExit_Click);
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Aqua;
-            this.label8.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label8.Location = new System.Drawing.Point(567, 164);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(124, 24);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "画像を表示";
-            // 
             // ofdFileOpenDialog
             // 
             this.ofdFileOpenDialog.FileName = "openFileDialog1";
@@ -400,7 +388,6 @@ namespace CarReportSystem {
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(794, 548);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.btExit);
             this.Controls.Add(this.btSave);
             this.Controls.Add(this.btOpen);
@@ -471,7 +458,6 @@ namespace CarReportSystem {
         private System.Windows.Forms.Button btOpen;
         private System.Windows.Forms.Button btSave;
         private System.Windows.Forms.Button btExit;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.OpenFileDialog ofdFileOpenDialog;
         private System.Windows.Forms.SaveFileDialog sfdSaveDialog;
         private System.Windows.Forms.MenuStrip menuStrip1;
