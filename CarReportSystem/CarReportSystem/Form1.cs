@@ -345,5 +345,24 @@ namespace CarReportSystem {
         private void carReportDBDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e) {
 
         }
+
+        private void 接続ToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.carReportDBTableAdapter.Fill(this.infosys202214DataSet.CarReportDB);
+
+        }
+
+        private void 更新ToolStripMenuItem_Click(object sender, EventArgs e) {
+            carReportDBDataGridView.CurrentRow.Cells[1].Value = dtpTime.Value;
+            carReportDBDataGridView.CurrentRow.Cells[2].Value = cbRecorder.Text;
+            carReportDBDataGridView.CurrentRow.Cells[3].Value = GetRadioButtonMakerGroup();
+            carReportDBDataGridView.CurrentRow.Cells[4].Value = cbCarName.Text;
+            carReportDBDataGridView.CurrentRow.Cells[5].Value = tbReport.Text;
+            carReportDBDataGridView.CurrentRow.Cells[6].Value = ImageToByteArray(pbPicture.Image);
+
+            //データベースに保存
+            this.Validate();
+            this.carReportDBBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.infosys202214DataSet);
+        }
     }
 }
