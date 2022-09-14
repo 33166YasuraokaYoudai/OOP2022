@@ -16,6 +16,7 @@ using System.Xml.Serialization;
 namespace CarReportSystem {
     public partial class Form1 : Form {
 
+
         BindingList<CarReport> listPerson = new BindingList<CarReport>();
         //設定情報保存用オブジェクト
         Settings settings = Settings.getInstance();
@@ -143,7 +144,7 @@ namespace CarReportSystem {
         //クリア
         private void btClear_Click(object sender, EventArgs e) {
 
-            
+            dtpTime.Text = null;
             cbRecorder.Text = null;
             cbCarName.Text = null;
             groupCheckBoxAllClear();
@@ -217,26 +218,6 @@ namespace CarReportSystem {
             }*/
         }
        
-        //保存
-        private void 保存ToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (sfdSaveDialog.ShowDialog() == DialogResult.OK) {
-                try {
-                    //バイナリ形式でシリアル化
-                    var bf = new BinaryFormatter();
-
-                    using (FileStream fs = File.Open(sfdSaveDialog.FileName, FileMode.Create)) {
-                        bf.Serialize(fs, listPerson);
-                    }
-                }
-                catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
-                }
-                foreach (var item in listPerson.Select(a => a.CarName)) {
-                    setcbCarName(item);
-                }
-            }
-           
-        }
 
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
@@ -292,7 +273,11 @@ namespace CarReportSystem {
         //DB接続
         private void btConect_Click(object sender, EventArgs e) {
             this.carReportDBTableAdapter.Fill(this.infosys202214DataSet.CarReportDB);
-
+            for (int i = 0; i < carReportDBDataGridView.Rows.Count; i++) {
+                setcbRecorder(carReportDBDataGridView.Rows[i].Cells[2].Value.ToString());
+                setcbCarName(carReportDBDataGridView.Rows[i].Cells[4].Value.ToString());
+            }
+            
         }
 
         private void carReportDBDataGridView_Click(object sender, EventArgs e) {
@@ -363,6 +348,11 @@ namespace CarReportSystem {
             this.Validate();
             this.carReportDBBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.infosys202214DataSet);
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+            this.carReportDBTableAdapter.FillByName(this.infosys202214DataSet.CarReportDB, tbNameSerch.Text);
+
         }
     }
 }
