@@ -12,11 +12,42 @@ namespace SampleEntityFramework {
             //AddAuthors();
             //AddBooks();
             var books = GetAllBooks();
-            foreach (var book in books) {
+            Console.WriteLine("-----1-2-----");
+            foreach (var book in books){
 
-                Console.WriteLine("タイトル:{0},発行年:{1}",book.Title,book.PublishedYear);
-               
+                Console.WriteLine("タイトル:{0},発行年:{1},著者:{2},誕生日:{3:yyyy/MM}", book.Title,book.PublishedYear,book.Author.Name,book.Author.Birthday);
+                
+;            }
+            Console.WriteLine();//改行
+            Console.WriteLine("-----1-3-----");
+            var Max = GetBooks();
+            foreach (var max in Max) {
+
+                Console.WriteLine("タイトル:{0},発行年:{1},著者:{2},誕生日:{3:yyyy/MM}", max.Title, max.PublishedYear, max.Author.Name, max.Author.Birthday);
             }
+            Console.WriteLine();//改行
+            Console.WriteLine("-----1-4-----");
+            var Old = GetOldBooks();
+            foreach (var old in Old.Take(3)) {
+
+                Console.WriteLine("タイトル:{0},発行年:{1},著者:{2},誕生日:{3:yyyy/MM}", old.Title, old.PublishedYear, old.Author.Name, old.Author.Birthday);
+            }
+            Console.WriteLine();//改行
+            using (var db = new BooksDbContext()) {
+                var authors = db.Authors
+                     .OrderByDescending(b => b.Birthday)
+                     .ToList();
+                foreach (var author in authors) {
+                    Console.WriteLine("{0},{1:yyyy/MM}", author.Name, author.Birthday);
+                    foreach (var book in author.Books) {
+                        Console.WriteLine("{0} {1}",
+                                book.Title, book.PublishedYear,
+                                book.Author.Name, book.Author.Birthday);
+                    }
+                    Console.WriteLine();//改行
+                }
+            }
+            Console.ReadLine();//F5だけでも画面を閉じないように
         }
 
         //List 13-5
@@ -91,14 +122,22 @@ namespace SampleEntityFramework {
 
         static IEnumerable<Book> GetAllBooks() {
             using(var db = new BooksDbContext()) {
-                return db.Books.ToList();
+                return db.Books.Include(nameof(Author)).ToList();
             }
         }
         static IEnumerable<Book> GetBooks() {
             using (var db = new BooksDbContext()) {
                 return db.Books
-                    .Where(book => book.Author.Name.StartsWith("夏目"));
-                    
+                    .Include(nameof(Author))
+                    .Where(a => a.Title.Length == db.Books.Max(b => b.Title.Length))
+                    .ToList();
+            }
+        }
+        static IEnumerable<Book> GetOldBooks() {
+            using (var db = new BooksDbContext()) {
+                return db.Books.Include(nameof(Author))
+                    .OrderBy(a => a.PublishedYear)
+                    .ToList();
             }
         }
 
