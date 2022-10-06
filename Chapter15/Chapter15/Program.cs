@@ -62,9 +62,9 @@ namespace Chapter15 {
             foreach (var book in selected.OrderByDescending(a=>a.PublishedYear).ThenBy(x=>x.category)) {
                 //Console.WriteLine($"{book.PublishedYear}年");
                 //var category = Library.Categories.Where(b => b.Id == book.CategoryId).First();
-                Console.WriteLine($"出版年:{ book.PublishedYear},タイトル:{ book.Title },カテゴリ:{book.category} 合計{book.Price}");
-                Console.WriteLine();
+                Console.WriteLine($"出版年:{ book.PublishedYear},タイトル:{ book.Title },カテゴリ:{book.category} 価格：{book.Price}円");
             }
+            Console.WriteLine($"金額の合計:{selected.Sum(b=>b.Price)}円");
         }
     }
 }
