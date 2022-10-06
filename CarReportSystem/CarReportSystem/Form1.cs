@@ -3,58 +3,60 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+<<<<<<< HEAD
 using System.Xml;
 using System.Xml.Serialization;
+=======
+>>>>>>> parent of 3abd928 (7/19 背景の色変更　完成)
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
-
         BindingList<CarReport> listPerson = new BindingList<CarReport>();
+<<<<<<< HEAD
         //設定情報保存用オブジェクト
         Settings settings = Settings.getInstance();
+=======
+>>>>>>> parent of 3abd928 (7/19 背景の色変更　完成)
         public Form1() {
             InitializeComponent();
             dgv.DataSource = listPerson;
             
         }
-        
+
         private void btExit_Click(object sender, EventArgs e) {
             Application.Exit();
         }
+<<<<<<< HEAD
         
         //追加ボタンが押された時の処理
+=======
+
+>>>>>>> parent of 3abd928 (7/19 背景の色変更　完成)
         private void btAddition_Click(object sender, EventArgs e) {
-            if (String.IsNullOrWhiteSpace(cbRecorder.Text)) {
+            if(String.IsNullOrWhiteSpace(cbRecorder.Text)) {
                 MessageBox.Show("氏名が入力されていません");
                 return;
             }
             CarReport carReport = GetCarReport();
             listPerson.Add(carReport);
-            Check();
-            EnabledCheck();
-            setcbRecorder(cbRecorder.Text);
-            setcbCarName(cbCarName.Text);
-
         }
-
         private CarReport GetCarReport() {
             return new CarReport {
                 Date = dtpTime.Value,
                 Auther = cbRecorder.Text,
                 CarName = cbCarName.Text,
-                Maker = GetRadioButtonMakerGroup(),
                 Report = tbReport.Text,
-                Picture = pbPicture.Image,
+
             };
         }
+
+
         
+<<<<<<< HEAD
         private void btPictureOpen_Click_1(object sender, EventArgs e) {
             if (ofdFileOpenDialog.ShowDialog() == DialogResult.OK) {
                 pbPicture.Image = Image.FromFile(ofdFileOpenDialog.FileName);
@@ -304,11 +306,10 @@ namespace CarReportSystem {
             Application.Exit();
         }
 
+=======
+>>>>>>> parent of 3abd928 (7/19 背景の色変更　完成)
         private void btPictureOpen_Click(object sender, EventArgs e) {
-            if (ofdFileOpenDialog.ShowDialog() == DialogResult.OK) {
-                pbPicture.Image = Image.FromFile(ofdFileOpenDialog.FileName);
 
-            }
         }
     }
 }

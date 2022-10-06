@@ -55,7 +55,6 @@ namespace AddressBook {
             this.rbCellPhone = new System.Windows.Forms.RadioButton();
             this.rbHome = new System.Windows.Forms.RadioButton();
             this.tbMailAddress = new System.Windows.Forms.TextBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             this.gbKindNumber.SuspendLayout();
@@ -114,7 +113,6 @@ namespace AddressBook {
             this.dgvPersons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPersons.Size = new System.Drawing.Size(718, 145);
             this.dgvPersons.TabIndex = 1;
-            this.dgvPersons.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPersons_CellContentClick);
             this.dgvPersons.Click += new System.EventHandler(this.dgvPersons_Click);
             // 
             // tbName
@@ -366,10 +364,6 @@ namespace AddressBook {
             this.tbMailAddress.Size = new System.Drawing.Size(382, 31);
             this.tbMailAddress.TabIndex = 2;
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -448,7 +442,6 @@ namespace AddressBook {
         private System.Windows.Forms.RadioButton rbCellPhone;
         private System.Windows.Forms.RadioButton rbHome;
         private System.Windows.Forms.TextBox tbMailAddress;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

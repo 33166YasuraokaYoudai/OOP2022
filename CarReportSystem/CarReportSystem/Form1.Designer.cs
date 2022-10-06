@@ -51,6 +51,7 @@ namespace CarReportSystem {
             this.btOpen = new System.Windows.Forms.Button();
             this.btSave = new System.Windows.Forms.Button();
             this.btExit = new System.Windows.Forms.Button();
+<<<<<<< HEAD
             this.ofdFileOpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.sfdSaveDialog = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -81,15 +82,17 @@ namespace CarReportSystem {
             this.tableAdapterManager = new CarReportSystem.infosys202214DataSetTableAdapters.TableAdapterManager();
             this.btDelete = new System.Windows.Forms.Button();
 >>>>>>> Stashed changes
+=======
+            this.label8 = new System.Windows.Forms.Label();
+>>>>>>> parent of 3abd928 (7/19 背景の色変更　完成)
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 36);
+            this.label1.Location = new System.Drawing.Point(38, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 12);
             this.label1.TabIndex = 0;
@@ -97,7 +100,7 @@ namespace CarReportSystem {
             // 
             // dtpTime
             // 
-            this.dtpTime.Location = new System.Drawing.Point(93, 31);
+            this.dtpTime.Location = new System.Drawing.Point(93, 27);
             this.dtpTime.Name = "dtpTime";
             this.dtpTime.Size = new System.Drawing.Size(229, 19);
             this.dtpTime.TabIndex = 1;
@@ -223,7 +226,7 @@ namespace CarReportSystem {
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(510, 34);
+            this.label6.Location = new System.Drawing.Point(505, 27);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 12);
             this.label6.TabIndex = 0;
@@ -231,7 +234,7 @@ namespace CarReportSystem {
             // 
             // btPictureOpen
             // 
-            this.btPictureOpen.Location = new System.Drawing.Point(562, 27);
+            this.btPictureOpen.Location = new System.Drawing.Point(562, 20);
             this.btPictureOpen.Name = "btPictureOpen";
             this.btPictureOpen.Size = new System.Drawing.Size(84, 23);
             this.btPictureOpen.TabIndex = 5;
@@ -241,13 +244,12 @@ namespace CarReportSystem {
             // 
             // btPictureDelete
             // 
-            this.btPictureDelete.Location = new System.Drawing.Point(658, 27);
+            this.btPictureDelete.Location = new System.Drawing.Point(665, 21);
             this.btPictureDelete.Name = "btPictureDelete";
             this.btPictureDelete.Size = new System.Drawing.Size(89, 23);
             this.btPictureDelete.TabIndex = 5;
             this.btPictureDelete.Text = "削除";
             this.btPictureDelete.UseVisualStyleBackColor = true;
-            this.btPictureDelete.Click += new System.EventHandler(this.btPictureDelete_Click);
             // 
             // pbPicture
             // 
@@ -285,7 +287,6 @@ namespace CarReportSystem {
             this.btModify.TabIndex = 5;
             this.btModify.Text = "修正";
             this.btModify.UseVisualStyleBackColor = true;
-            this.btModify.Click += new System.EventHandler(this.btModify_Click);
             // 
             // btDelete
             // 
@@ -295,7 +296,6 @@ namespace CarReportSystem {
             this.btDelete.TabIndex = 5;
             this.btDelete.Text = "削除";
             this.btDelete.UseVisualStyleBackColor = true;
-            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // dgv
             // 
@@ -308,7 +308,6 @@ namespace CarReportSystem {
             this.dgv.RowTemplate.Height = 21;
             this.dgv.Size = new System.Drawing.Size(666, 182);
             this.dgv.TabIndex = 8;
-            this.dgv.Click += new System.EventHandler(this.dgv_Click);
             // 
             // label7
             // 
@@ -328,7 +327,6 @@ namespace CarReportSystem {
             this.btOpen.TabIndex = 9;
             this.btOpen.Text = "開く...";
             this.btOpen.UseVisualStyleBackColor = true;
-            this.btOpen.Click += new System.EventHandler(this.btOpen_Click);
             // 
             // btSave
             // 
@@ -339,7 +337,6 @@ namespace CarReportSystem {
             this.btSave.TabIndex = 9;
             this.btSave.Text = "保存";
             this.btSave.UseVisualStyleBackColor = true;
-            this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
             // btExit
             // 
@@ -351,6 +348,7 @@ namespace CarReportSystem {
             this.btExit.UseVisualStyleBackColor = true;
             this.btExit.Click += new System.EventHandler(this.btExit_Click);
             // 
+<<<<<<< HEAD
             // ofdFileOpenDialog
             // 
             this.ofdFileOpenDialog.FileName = "openFileDialog1";
@@ -567,6 +565,19 @@ namespace CarReportSystem {
             this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
 >>>>>>> Stashed changes
+=======
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Aqua;
+            this.label8.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label8.Location = new System.Drawing.Point(567, 164);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(124, 24);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "画像を表示";
+            // 
+>>>>>>> parent of 3abd928 (7/19 背景の色変更　完成)
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -599,16 +610,10 @@ namespace CarReportSystem {
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "試乗レポート管理システム";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -642,6 +647,7 @@ namespace CarReportSystem {
         private System.Windows.Forms.Button btOpen;
         private System.Windows.Forms.Button btSave;
         private System.Windows.Forms.Button btExit;
+<<<<<<< HEAD
         private System.Windows.Forms.OpenFileDialog ofdFileOpenDialog;
         private System.Windows.Forms.SaveFileDialog sfdSaveDialog;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -652,6 +658,9 @@ namespace CarReportSystem {
         private System.Windows.Forms.ToolStripMenuItem 終了ToolStripMenuItem;
         private System.Windows.Forms.ColorDialog colorDialog1;
         public System.Windows.Forms.DataGridView dgv;
+=======
+        private System.Windows.Forms.Label label8;
+>>>>>>> parent of 3abd928 (7/19 背景の色変更　完成)
     }
 }
 
