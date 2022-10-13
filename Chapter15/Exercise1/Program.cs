@@ -40,9 +40,18 @@ namespace Exercise1 {
 
         private static void Exercise1_4() {
             var books = Library.Books.OrderByDescending(a => a.PublishedYear)
-                                     .ThenByDescending(b => b.Price);
+                                     .ThenByDescending(b => b.Price)
+                                     .Join(Library.Categories,
+                                       book => book.CategoryId,
+                                       category => category.Id,
+                                       (book, category) => new {
+                                           Title = book.Title,
+                                           PublishedYear = book.Price,
+                                           Price = book.Price,
+                                           Name = category.Name
+                                       });
             foreach (var book in books) {
-                Console.WriteLine($"発行年:{book.PublishedYear} 価格:{book.Price} タイトル:{book.Title}");
+                Console.WriteLine($"発行年:{book.PublishedYear} 価格:{book.Price} タイトル:{book.Title}({book.Name})");
             }
            
         }
@@ -89,10 +98,10 @@ namespace Exercise1 {
 
         private static void Exercise1_8() {
             var group = Library.Categories.GroupJoin(Library.Books,
-                                                    c => c.Id,
-                                                    b => b.CategoryId,
-                                                    (c, books) => new {
-                                                        Category = c.Name,
+                                                    category => category.Id,
+                                                    book => book.CategoryId,
+                                                    (category, books) => new {
+                                                        Category = category.Name,
                                                         Count = books.Count()
                                                     });
             foreach (var book in group.Where(a=>a.Count >= 4)) {
