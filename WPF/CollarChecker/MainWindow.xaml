@@ -21,27 +21,26 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="50"/>
+
             </Grid.ColumnDefinitions>
             <TextBlock  Grid.Column="0" Grid.Row="1" Text="R" FontSize="25" HorizontalAlignment="Center"/>
             <TextBlock  Grid.Column="0" Grid.Row="2" Text="G" FontSize="25" HorizontalAlignment="Center"/>
             <TextBlock  Grid.Column="0" Grid.Row="3" Text="B" FontSize="25" HorizontalAlignment="Center"/>
-            
-            <Slider x:Name="Slider1" Grid.Column="1" Grid.Row="1" Margin="15" Grid.ColumnSpan="3" Minimum="0" Maximum="255"/>
-            <Slider x:Name="Slider2" Grid.Column="1" Grid.Row="2" Margin="15" Grid.ColumnSpan="3" Minimum="0" Maximum="255"/>
-            <Slider x:Name="Slider3" Grid.Column="1" Grid.Row="3" Margin="15" Grid.ColumnSpan="3" Minimum="0" Maximum="255"/>
 
-            <TextBox Grid.Column="4" Grid.Row="1" Text="{Binding ElementName=Slider1,Path=Value,UpdateSourceTrigger=PropertyChanged}" 
+            <Slider x:Name="Slider1" Grid.Column="1" Grid.Row="1" Margin="15,15,10,15" Minimum="0" Maximum="255" ValueChanged="Slider1_ValueChanged"/>
+            <Slider x:Name="Slider2" Grid.Column="1" Grid.Row="2" Margin="15,15,10,15" Minimum="0" Maximum="255" ValueChanged="Slider2_ValueChanged"/>
+            <Slider x:Name="Slider3" Grid.Column="1" Grid.Row="3" Margin="15,15,10,15" Minimum="0" Maximum="255" ValueChanged="Slider3_ValueChanged"/>
+
+            <TextBox Grid.Column="4" Grid.Row="1" Text="{Binding ElementName=Slider1,Path=Value,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}" 
                      Margin="10" Height="20"/>
-            <TextBox Grid.Column="4" Grid.Row="2" Text="{Binding ElementName=Slider2,Path=Value,UpdateSourceTrigger=PropertyChanged}" 
+            <TextBox Grid.Column="4" Grid.Row="2" Text="{Binding ElementName=Slider2,Path=Value,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}" 
                      Margin="10" Height="20" />
-            <TextBox Grid.Column="4" Grid.Row="3" Text="{Binding ElementName=Slider3,Path=Value,UpdateSourceTrigger=PropertyChanged}" 
+            <TextBox Grid.Column="4" Grid.Row="3" Text="{Binding ElementName=Slider3,Path=Value,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}" 
                      Margin="10" Height="20" />
         </Grid>
-        <Label Grid.Row="1" Width="200" Height="200"/>
+        <Label x:Name="label" Grid.Row="1" Width="200" Height="200" />
 
     </Grid>
 </Window>
