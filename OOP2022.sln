@@ -131,6 +131,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleSlider", "WPF\SampleS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleUnitConverter", "WPF\SampleUnitConverter\SampleUnitConverter.csproj", "{661E80FE-E618-4F35-A1BE-2A431D640C94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollarChecker", "WPF\CollarChecker\CollarChecker.csproj", "{624FCD15-685B-4155-A452-02C633537B73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -321,6 +323,10 @@ Global
 		{661E80FE-E618-4F35-A1BE-2A431D640C94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{661E80FE-E618-4F35-A1BE-2A431D640C94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{661E80FE-E618-4F35-A1BE-2A431D640C94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{624FCD15-685B-4155-A452-02C633537B73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{624FCD15-685B-4155-A452-02C633537B73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{624FCD15-685B-4155-A452-02C633537B73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{624FCD15-685B-4155-A452-02C633537B73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -374,6 +380,7 @@ Global
 		{2F35E195-9259-49DF-9F2E-35717E139A86} = {AB7EA644-7FA3-461D-BB23-69098680CB34}
 		{FE5292ED-392A-49E0-A479-F3E17B040F4A} = {AB7EA644-7FA3-461D-BB23-69098680CB34}
 		{661E80FE-E618-4F35-A1BE-2A431D640C94} = {AB7EA644-7FA3-461D-BB23-69098680CB34}
+		{624FCD15-685B-4155-A452-02C633537B73} = {AB7EA644-7FA3-461D-BB23-69098680CB34}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B1EA921C-810E-4716-A75C-C7E515900697}
