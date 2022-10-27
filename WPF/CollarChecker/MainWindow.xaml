@@ -33,6 +33,23 @@
             <Slider x:Name="Slider2" Grid.Column="1" Grid.Row="2" Margin="15,15,10,15" Minimum="0" Maximum="255" ValueChanged="Slider2_ValueChanged"/>
             <Slider x:Name="Slider3" Grid.Column="1" Grid.Row="3" Margin="15,15,10,15" Minimum="0" Maximum="255" ValueChanged="Slider3_ValueChanged"/>
 
+            <ComboBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding}" SelectedValue="{Binding Color}" Margin="10,17,0,0" Height="24" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="131" SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="20" Height="Auto" Margin="5,0" BorderThickness="1" BorderBrush="Black" Loaded="Border_Loaded" >
+                                <Border.Background>
+                                    <SolidColorBrush Color="{Binding Color}"/>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+
+
             <TextBox Grid.Column="4" Grid.Row="1" Text="{Binding ElementName=Slider1,Path=Value,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}" 
                      Margin="10" Height="20"/>
             <TextBox Grid.Column="4" Grid.Row="2" Text="{Binding ElementName=Slider2,Path=Value,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}" 
@@ -40,7 +57,7 @@
             <TextBox Grid.Column="4" Grid.Row="3" Text="{Binding ElementName=Slider3,Path=Value,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}" 
                      Margin="10" Height="20" />
         </Grid>
-        <Label x:Name="label" Grid.Row="1" Width="200" Height="200" />
+        <Label x:Name="label" Grid.Row="1" Margin="30" Background="AliceBlue"  />
 
     </Grid>
 </Window>
