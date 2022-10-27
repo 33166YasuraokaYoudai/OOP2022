@@ -19,24 +19,19 @@ namespace CollarChecker {
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window {
+
         public MainWindow() {
             InitializeComponent();
             DataContext = GetColorList();
+            getColor();
         }
 
-        private void Slider1_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
-            ColorCheng();
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
+            getColor();
         }
 
-        private void Slider2_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
-            ColorCheng();
-        }
 
-        private void Slider3_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
-            ColorCheng();
-        }
-
-        private void ColorCheng() {
+        private void getColor() {
             var Rcolor = Slider1.Value;
             var Gcolor = Slider2.Value;
             var Bcolor = Slider3.Value;
@@ -68,13 +63,35 @@ namespace CollarChecker {
         private void Border_Loaded(object sender, RoutedEventArgs e) {
 
         }
-    }
+        /// <summary>
+        /// 色と色名を保持するクラス
+        /// </summary>
+        public class MyColor {
+            public Color Color { get; set; }
+            public string Name { get; set; }
+        }
 
-    /// <summary>
-    /// 色と色名を保持するクラス
-    /// </summary>
-    public class MyColor {
-        public Color Color { get; set; }
-        public string Name { get; set; }
+        private void Window_Loaded(object sender, RoutedEventArgs e) {
+            getColor();
+            
+        }
+
+        
+
+        private void Savebt_Click(object sender, RoutedEventArgs e) {
+            var color = $"R:{rText.Text} G:{gText.Text} B:{bText.Text}";
+            ColorInfo.Items.Add(color);
+        }
+
+        private void ColorInfo_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            var colors = ColorInfo.SelectedItem;
+            string[] color = colors.ToString().Split(' ');
+
+            rText.Text = color[0].Substring(2);
+            gText.Text = color[1].Substring(2);
+            bText.Text = color[2].Substring(2);
+
+
+        }
     }
 }
