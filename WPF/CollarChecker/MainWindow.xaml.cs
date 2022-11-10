@@ -24,7 +24,7 @@ namespace CollarChecker {
         public MainWindow() {
             InitializeComponent();
             DataContext = GetColorList();
-            
+            btmask();
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
@@ -81,13 +81,11 @@ namespace CollarChecker {
 
         private void Savebt_Click(object sender, RoutedEventArgs e) {
             var stColor = getMyColor(byte.Parse(rText.Text), byte.Parse(gText.Text), byte.Parse(bText.Text));
-           
-            
             //var color = $"R:{rText.Text} G:{gText.Text} B:{bText.Text}";
             //ColorInfo.Items.Add(color);
             ColorInfo.Items.Insert(0, stColor?.Name ?? "R:" + stColor.Color.R + "G:" + stColor.Color.G + "B:" + stColor.Color.B);
             colorlist.Insert(0, stColor);
-            
+            btmask();
         }
         private MyColor getMyColor(byte r,byte g,byte b) {
 
@@ -102,9 +100,19 @@ namespace CollarChecker {
         }
 
         private void Deletebt_Click(object sender, RoutedEventArgs e) {
+            if (ColorInfo.SelectedIndex == -1) return;
 
-            ColorInfo.Items.Remove(ColorInfo.SelectedItem);
-            
+            colorlist.RemoveAt(ColorInfo.SelectedIndex);
+            ColorInfo.Items.RemoveAt(ColorInfo.SelectedIndex);
+            btmask();
+        }
+        private void btmask() {
+            if(ColorInfo.Items.Count == 0) {
+                Deletebt.IsEnabled = false;
+            } else {
+                Deletebt.IsEnabled = true;
+            }
+
         }
 
         private void ColorInfo_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -113,12 +121,10 @@ namespace CollarChecker {
             //rText.Text = color[0].Substring(2);
             //gText.Text = color[1].Substring(2);
             //bText.Text = color[2].Substring(2);
-            if(ColorInfo.SelectedIndex != -1) {
-                Slider1.Value = colorlist[ColorInfo.SelectedIndex].Color.R;
-                Slider2.Value = colorlist[ColorInfo.SelectedIndex].Color.G;
-                Slider3.Value = colorlist[ColorInfo.SelectedIndex].Color.B;
-            }
-            
+            if (ColorInfo.SelectedIndex == -1) return;
+            Slider1.Value = colorlist[ColorInfo.SelectedIndex].Color.R;
+            Slider2.Value = colorlist[ColorInfo.SelectedIndex].Color.G;
+            Slider3.Value = colorlist[ColorInfo.SelectedIndex].Color.B;
             GetColor();
 
 
