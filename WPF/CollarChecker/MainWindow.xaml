@@ -24,8 +24,8 @@
                 <ColumnDefinition Width="40*"/>
                 <ColumnDefinition Width="150*"/>
                 <ColumnDefinition Width="60*"/>
-
             </Grid.ColumnDefinitions>
+
             <TextBlock  Grid.Column="0" Grid.Row="1" Text="R" FontSize="25" HorizontalAlignment="Center"/>
             <TextBlock  Grid.Column="0" Grid.Row="2" Text="G" FontSize="25" HorizontalAlignment="Center"/>
             <TextBlock  Grid.Column="0" Grid.Row="3" Text="B" FontSize="25" HorizontalAlignment="Center"/>
@@ -34,7 +34,7 @@
             <Slider x:Name="Slider2" Grid.Column="1" Grid.Row="2" Margin="15,15,10,10" Minimum="0" Maximum="255" TickPlacement="BottomRight" TickFrequency="50" ValueChanged="Slider_ValueChanged"/>
             <Slider x:Name="Slider3" Grid.Column="1" Grid.Row="3" Margin="15,15,10,0" Minimum="0" Maximum="255" TickPlacement="BottomRight" TickFrequency="50" ValueChanged="Slider_ValueChanged"/>
 
-            <ComboBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding}" SelectedValue="{Binding Color}" Margin="9,26,0,0" Height="24" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="120" SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBox x:Name="colorbox" Grid.Row="4" Grid.Column="1" ItemsSource="{Binding}" SelectedValue="{Binding Color}" Margin="9,26,0,0" Height="24" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="120" SelectionChanged="ComboBox_SelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -49,18 +49,17 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-
-
             <TextBox x:Name="rText" Grid.Column="4" Grid.Row="1" Text="{Binding ElementName=Slider1,Path=Value,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}" 
                      Margin="10" Height="20"/>
             <TextBox x:Name="gText" Grid.Column="4" Grid.Row="2" Text="{Binding ElementName=Slider2,Path=Value,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}" 
                      Margin="10" Height="20" />
             <TextBox x:Name="bText" Grid.Column="4" Grid.Row="3" Text="{Binding ElementName=Slider3,Path=Value,UpdateSourceTrigger=PropertyChanged,StringFormat={}{0:0}}" 
                      Margin="10" Height="20" />
-            <Button x:Name="Save" Content="保存" Grid.Column="2" HorizontalAlignment="Center" Margin="5" Grid.Row="4" VerticalAlignment="Center" Width="40" Click="Savebt_Click" Height="24" RenderTransformOrigin="0.478,0.602"/>
+            <Button x:Name="Save" Content="保存" Grid.Column="2" HorizontalAlignment="Center" Margin="86,26,-170,0" VerticalAlignment="Top" Width="139" Click="Savebt_Click" Height="20" RenderTransformOrigin="3.02,-8.053"/>
+            <Button x:Name="Deletebt" Content="削除" Grid.Column="2" HorizontalAlignment="Left" Margin="10,26,0,0" Grid.Row="4" VerticalAlignment="Top" Width="35" RenderTransformOrigin="0.222,0.767" Height="24" Click="Deletebt_Click"/>
         </Grid>
         <Label x:Name="label" Grid.Row="1" Margin="30" Background="AliceBlue"  />
-        <ListBox x:Name="ColorInfo" HorizontalAlignment="Left" Width="140"  Grid.Column="2" Margin="31,31,0,30" SelectionChanged="ColorInfo_SelectionChanged"/>
+        <ListBox x:Name="ColorInfo" HorizontalAlignment="Left" Width="140"  Grid.Column="2" Margin="31,50,0,30" SelectionChanged="ColorInfo_SelectionChanged" RenderTransformOrigin="0.497,0.541"/>
 
     </Grid>
 </Window>

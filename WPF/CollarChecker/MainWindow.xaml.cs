@@ -19,23 +19,22 @@ namespace CollarChecker {
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window {
-
+        List<MyColor> colorlist = new List<MyColor>();
+        MyColor mycolor = new MyColor();
         public MainWindow() {
             InitializeComponent();
             DataContext = GetColorList();
-            getColor();
+            
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
-            getColor();
+            GetColor();
         }
 
 
-        private void getColor() {
-            var Rcolor = Slider1.Value;
-            var Gcolor = Slider2.Value;
-            var Bcolor = Slider3.Value;
-            label.Background = new SolidColorBrush(Color.FromRgb(((byte)Rcolor), ((byte)Gcolor), ((byte)Bcolor)));
+        private void GetColor() {
+            label.Background = new SolidColorBrush(Color.FromRgb(((byte)Slider1.Value), ((byte)Slider2.Value), ((byte)Slider3.Value)));
+            
         }
         /// <summary>
         /// すべての色を取得するメソッド
@@ -46,18 +45,20 @@ namespace CollarChecker {
                 .Select(i => new MyColor() { Color = (Color)i.GetValue(null), Name = i.Name }).ToArray();
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            var mycolor = (MyColor)((ComboBox)sender).SelectedItem;
-            var color = mycolor.Color;
-            var name = mycolor.Name;
+        private void setColor() {
+            var r = byte.Parse(rText.Text);
+            var g = byte.Parse(gText.Text);
+            var b = byte.Parse(bText.Text);
+            Color color = Color.FromRgb(r, g, b);
             label.Background = new SolidColorBrush(color);
 
-            int r = color.R;
-            int g = color.G;
-            int b = color.B;
-            Slider1.Value = r;
-            Slider2.Value = g;
-            Slider3.Value = b;
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            Slider1.Value = ((MyColor)((ComboBox)sender).SelectedItem).Color.R;
+            Slider2.Value = ((MyColor)((ComboBox)sender).SelectedItem).Color.G;
+            Slider3.Value = ((MyColor)((ComboBox)sender).SelectedItem).Color.B;
+            setColor();
         }
 
         private void Border_Loaded(object sender, RoutedEventArgs e) {
@@ -72,24 +73,53 @@ namespace CollarChecker {
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            getColor();
+            GetColor();
             
         }
 
         
 
         private void Savebt_Click(object sender, RoutedEventArgs e) {
-            var color = $"R:{rText.Text} G:{gText.Text} B:{bText.Text}";
-            ColorInfo.Items.Add(color);
+            var stColor = getMyColor(byte.Parse(rText.Text), byte.Parse(gText.Text), byte.Parse(bText.Text));
+           
+            
+            //var color = $"R:{rText.Text} G:{gText.Text} B:{bText.Text}";
+            //ColorInfo.Items.Add(color);
+            ColorInfo.Items.Insert(0, stColor?.Name ?? "R:" + stColor.Color.R + "G:" + stColor.Color.G + "B:" + stColor.Color.B);
+            colorlist.Insert(0, stColor);
+            
+        }
+        private MyColor getMyColor(byte r,byte g,byte b) {
+
+            return new MyColor {
+                Color = Color.FromRgb(r, g, b),
+                Name = ((IEnumerable<MyColor>)DataContext)
+                                    .Where(c => c.Color.R == r &&
+                                               c.Color.G == g &&
+                                               c.Color.B == b)
+                                    .Select(c => c.Name).FirstOrDefault(),
+            };
+        }
+
+        private void Deletebt_Click(object sender, RoutedEventArgs e) {
+
+            ColorInfo.Items.Remove(ColorInfo.SelectedItem);
+            
         }
 
         private void ColorInfo_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            var colors = ColorInfo.SelectedItem;
-            string[] color = colors.ToString().Split(' ');
-
-            rText.Text = color[0].Substring(2);
-            gText.Text = color[1].Substring(2);
-            bText.Text = color[2].Substring(2);
+            //var colors = ColorInfo.SelectedItem;
+            //string[] color = colors.ToString().Split(' ');
+            //rText.Text = color[0].Substring(2);
+            //gText.Text = color[1].Substring(2);
+            //bText.Text = color[2].Substring(2);
+            if(ColorInfo.SelectedIndex != -1) {
+                Slider1.Value = colorlist[ColorInfo.SelectedIndex].Color.R;
+                Slider2.Value = colorlist[ColorInfo.SelectedIndex].Color.G;
+                Slider3.Value = colorlist[ColorInfo.SelectedIndex].Color.B;
+            }
+            
+            GetColor();
 
 
         }
