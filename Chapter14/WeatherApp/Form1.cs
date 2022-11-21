@@ -17,17 +17,18 @@ namespace WeatherApp {
         
         public Form1() {
             InitializeComponent();
-            //AreaName();
+            lbCheack();
+            tbCheack();
         }
 
         private void btWeatherGet_Click(object sender, EventArgs e) {
-            if(tbWeatherInfo.Text != null) {
-                tbWeatherInfo.Text = null;
-            }
+            tbCheack();
             
             CheckArea();
             var json = JsonConvert.DeserializeObject<Class1[]>(Prefecture);
-            tbWeatherInfo.Text = "今日の天気 : " + json[0].timeSeries[0].areas[0].weathers[0];
+            tbWeatherInfo.Text = "地名 : " + (string)lbArea.SelectedItem;
+            tbWeatherInfo.Text += Environment.NewLine;
+            tbWeatherInfo.Text += "今日の天気 : " + json[0].timeSeries[0].areas[0].weathers[0];
             tbWeatherInfo.Text += Environment.NewLine;
             tbWeatherInfo.Text += "明日の天気 : " + json[0].timeSeries[0].areas[0].weathers[1];
             tbWeatherInfo.Text += Environment.NewLine;
@@ -36,29 +37,34 @@ namespace WeatherApp {
             tbWeatherInfo.Text += "最低気温 : " + json[1].tempAverage.areas[0].min + "度";
             tbWeatherInfo.Text += Environment.NewLine;
             tbWeatherInfo.Text += "最高気温 : " + json[1].tempAverage.areas[0].max + "度";
+            WeatherPicture();
             //tbWeatherInfo.Text += 
         }
 
-
-
-        private void AreaName() {
-            string[] prefectures = {"宗谷地方", "上川・留萌地方", "網走・北見・紋別地方", "十勝地方", "釧路・根室地方", "胆振・日高地方",
-                                   "石狩・空知・後志地方","渡島・檜山地方","青森県", "岩手県", "宮城県",
-                                   "秋田県", "山形県", "福島県","茨城県", "栃木県", "群馬県", "埼玉県", "千葉県",
-                                   "東京都", "神奈川県", "山梨県", "長野県","岐阜県", "静岡県", "愛知県", "三重県",
-                                   "新潟県", "富山県", "石川県", "福井県","滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県",
-                                   "鳥取県", "島根県", "岡山県", "広島県","徳島県", "香川県", "愛媛県", "高知県",
-                                   "山口県", "福岡県", "佐賀県", "長崎県", "熊本県", "大分県","宮崎県", "奄美地方", "鹿児島県",
-                                   "沖縄本島地方", "大東島地方", "宮古島地方", "八重山地方"
-            };
-            //string[] a = {"北海道地方","東北地方","関東甲信地方","東海地方","北陸地方",
-            //              "近畿地方","中国地方","四国地方","九州北部地方","九州南部地方","沖縄地方"
-
-            //};
-            //cbArea.Items.AddRange(a);
-            lbArea.Items.AddRange(prefectures);
-
+        private void lbCheack() {
+            if(lbArea.Items.Count == 0) {
+                btWeatherGet.Enabled = false;
+                btClear.Enabled = false;
+            } else {
+                btWeatherGet.Enabled = true;
+                btClear.Enabled = true;
+            }
+            
         }
+        private void tbCheack() {
+            
+        }
+        private void WeatherPicture() {
+            var wc = new WebClient() {
+                Encoding = Encoding.UTF8
+            };
+            var json = JsonConvert.DeserializeObject<Class1[]>(Prefecture);
+
+            pbToday.ImageLocation = "https://www.jma.go.jp/bosai/forecast/img/" + json[0].timeSeries[0].areas[0].weatherCodes[0] +".png";
+            pbTomorrow.ImageLocation = "https://www.jma.go.jp/bosai/forecast/img/" + json[0].timeSeries[0].areas[0].weatherCodes[1] + ".png";
+            pbTwodays.ImageLocation = "https://www.jma.go.jp/bosai/forecast/img/" + json[0].timeSeries[0].areas[0].weatherCodes[2] + ".png";
+        }
+
 
         private void CheckArea() {
             var wc = new WebClient() {
@@ -80,7 +86,6 @@ namespace WeatherApp {
                     break;
                 case "十勝地方":
                     Prefecture = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/014030.json");
-
                     break;
                 case "釧路・北見・紋別地方":
                     Prefecture = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/014100.json");
@@ -322,6 +327,7 @@ namespace WeatherApp {
             string[] hokkaido = { "宗谷地方", "上川・留萌地方", "網走・北見・紋別地方", "十勝地方", "釧路・根室地方", "胆振・日高地方",
                                    "石狩・空知・後志地方","渡島・檜山地方"};
             lbArea.Items.AddRange(hokkaido);
+            lbCheack();
         }
 
         private void btTohoku_Click(object sender, EventArgs e) {
@@ -329,6 +335,7 @@ namespace WeatherApp {
             string[] Tohoku = {"青森県", "岩手県", "宮城県",
                                    "秋田県", "山形県", "福島県"};
             lbArea.Items.AddRange(Tohoku);
+            lbCheack();
         }
 
         private void btKanto_Click(object sender, EventArgs e) {
@@ -336,60 +343,79 @@ namespace WeatherApp {
             string[] Kanto = {"茨城県", "栃木県", "群馬県", "埼玉県", "千葉県",
                                    "東京都", "神奈川県", "山梨県", "長野県"};
             lbArea.Items.AddRange(Kanto);
+            lbCheack();
         }
 
         private void btHokuriku_Click(object sender, EventArgs e) {
             lbClear();
             string[] Hokuriki = { "新潟県", "富山県", "石川県", "福井県" };
             lbArea.Items.AddRange(Hokuriki);
+            lbCheack();
         }
 
         private void btTokai_Click(object sender, EventArgs e) {
             lbClear();
             string[] Tokai = { "岐阜県", "静岡県", "愛知県", "三重県" };
             lbArea.Items.AddRange(Tokai);
+            lbCheack();
         }
  
 
         private void btKinki_Click(object sender, EventArgs e) {
             string[] Kinki = { "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県" };
             lbArea.Items.AddRange(Kinki);
+            lbCheack();
         }
 
-        private void lbClear() {
-            if (lbArea.Items != null) {
-                lbArea.Items.Clear();
-            }
-        }
+        
 
         private void btTyugoku_Click(object sender, EventArgs e) {
             lbClear();
             string[] Tyugoku = { "鳥取県", "島根県", "岡山県", "広島県" };
             lbArea.Items.AddRange(Tyugoku);
+            lbCheack();
         }
 
         private void btSikoku_Click(object sender, EventArgs e) {
             lbClear();
             string[] Sikoku = { "徳島県", "香川県", "愛媛県", "高知県" };
             lbArea.Items.AddRange(Sikoku);
+            lbCheack();
         }
 
         private void btNkyusyu_Click(object sender, EventArgs e) {
             lbClear();
             string[] Nkyusyu = { "山口県", "福岡県", "佐賀県", "長崎県", "熊本県", "大分県" };
             lbArea.Items.AddRange(Nkyusyu);
+            lbCheack();
         }
 
         private void btSkyusyu_Click(object sender, EventArgs e) {
             lbClear();
             string[] Skyusyu = { "宮崎県", "奄美地方", "鹿児島県" };
             lbArea.Items.AddRange(Skyusyu);
+            lbCheack();
         }
 
         private void btOkinawa_Click(object sender, EventArgs e) {
             lbClear();
             string[] okinawa = { "沖縄本島地方", "大東島地方", "宮古島地方", "八重山地方" };
             lbArea.Items.AddRange(okinawa);
+            lbCheack();
+        }
+        private void lbClear() {
+            if (lbArea.Items != null) {
+                lbArea.Items.Clear();
+            }
+        }
+
+        private void btClear_Click(object sender, EventArgs e) {
+            lbClear();
+            tbWeatherInfo.Text = null;
+            pbToday.ImageLocation = null;
+            pbTomorrow.ImageLocation = null;
+            pbTwodays.ImageLocation = null;
+            lbCheack();
         }
     }
 }
