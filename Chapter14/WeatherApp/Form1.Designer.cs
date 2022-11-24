@@ -29,7 +29,6 @@ namespace WeatherApp {
             this.btWeatherGet = new System.Windows.Forms.Button();
             this.pictuer = new System.Windows.Forms.PictureBox();
             this.btTokai = new System.Windows.Forms.Button();
-            this.btSkyusyu = new System.Windows.Forms.Button();
             this.btNkyusyu = new System.Windows.Forms.Button();
             this.btKinki = new System.Windows.Forms.Button();
             this.btSikoku = new System.Windows.Forms.Button();
@@ -46,7 +45,6 @@ namespace WeatherApp {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictuer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbToday)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTomorrow)).BeginInit();
@@ -57,7 +55,7 @@ namespace WeatherApp {
             // 
             this.tbWeatherInfo.BackColor = System.Drawing.Color.LightSkyBlue;
             this.tbWeatherInfo.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbWeatherInfo.Location = new System.Drawing.Point(521, 474);
+            this.tbWeatherInfo.Location = new System.Drawing.Point(591, 482);
             this.tbWeatherInfo.Multiline = true;
             this.tbWeatherInfo.Name = "tbWeatherInfo";
             this.tbWeatherInfo.Size = new System.Drawing.Size(615, 178);
@@ -95,23 +93,13 @@ namespace WeatherApp {
             this.btTokai.UseVisualStyleBackColor = true;
             this.btTokai.Click += new System.EventHandler(this.btTokai_Click);
             // 
-            // btSkyusyu
-            // 
-            this.btSkyusyu.Location = new System.Drawing.Point(42, 521);
-            this.btSkyusyu.Name = "btSkyusyu";
-            this.btSkyusyu.Size = new System.Drawing.Size(118, 31);
-            this.btSkyusyu.TabIndex = 6;
-            this.btSkyusyu.Text = "九州南部・奄美地方";
-            this.btSkyusyu.UseVisualStyleBackColor = true;
-            this.btSkyusyu.Click += new System.EventHandler(this.btSkyusyu_Click);
-            // 
             // btNkyusyu
             // 
-            this.btNkyusyu.Location = new System.Drawing.Point(4, 340);
+            this.btNkyusyu.Location = new System.Drawing.Point(12, 448);
             this.btNkyusyu.Name = "btNkyusyu";
             this.btNkyusyu.Size = new System.Drawing.Size(100, 31);
             this.btNkyusyu.TabIndex = 6;
-            this.btNkyusyu.Text = "九州北部地方";
+            this.btNkyusyu.Text = "九州";
             this.btNkyusyu.UseVisualStyleBackColor = true;
             this.btNkyusyu.Click += new System.EventHandler(this.btNkyusyu_Click);
             // 
@@ -264,17 +252,6 @@ namespace WeatherApp {
             this.label3.TabIndex = 9;
             this.label3.Text = "明後日";
             // 
-            // btClear
-            // 
-            this.btClear.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btClear.Location = new System.Drawing.Point(1145, 622);
-            this.btClear.Name = "btClear";
-            this.btClear.Size = new System.Drawing.Size(97, 30);
-            this.btClear.TabIndex = 10;
-            this.btClear.Text = "クリア";
-            this.btClear.UseVisualStyleBackColor = true;
-            this.btClear.Click += new System.EventHandler(this.btClear_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -283,7 +260,6 @@ namespace WeatherApp {
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1254, 664);
             this.Controls.Add(this.tbWeatherInfo);
-            this.Controls.Add(this.btClear);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -300,13 +276,11 @@ namespace WeatherApp {
             this.Controls.Add(this.btSikoku);
             this.Controls.Add(this.btKinki);
             this.Controls.Add(this.btNkyusyu);
-            this.Controls.Add(this.btSkyusyu);
             this.Controls.Add(this.btTokai);
             this.Controls.Add(this.pictuer);
             this.Controls.Add(this.btWeatherGet);
             this.Name = "Form1";
             this.Text = "天気予報表示アプリ";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictuer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbToday)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTomorrow)).EndInit();
@@ -322,7 +296,6 @@ namespace WeatherApp {
         private System.Windows.Forms.Button btWeatherGet;
         private System.Windows.Forms.PictureBox pictuer;
         private System.Windows.Forms.Button btTokai;
-        private System.Windows.Forms.Button btSkyusyu;
         private System.Windows.Forms.Button btNkyusyu;
         private System.Windows.Forms.Button btKinki;
         private System.Windows.Forms.Button btSikoku;
@@ -339,7 +312,6 @@ namespace WeatherApp {
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btClear;
     }
 }
 

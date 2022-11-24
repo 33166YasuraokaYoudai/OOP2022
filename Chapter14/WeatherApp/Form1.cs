@@ -12,31 +12,39 @@ using System.Windows.Forms;
 
 namespace WeatherApp {
     public partial class Form1 : Form {
-        //Image currentImage = Image.FromFile();
+        
         string Prefecture;
         
         public Form1() {
             InitializeComponent();
+            
+            string[] Kanto = {"茨城県", "栃木県", "群馬県", "埼玉県", "千葉県",
+                                   "東京都", "神奈川県", "山梨県", "長野県"};
+            lbArea.Items.AddRange(Kanto);
             lbCheack();
-            tbCheack();
         }
 
         private void btWeatherGet_Click(object sender, EventArgs e) {
-            tbCheack();
             
             CheckArea();
             var json = JsonConvert.DeserializeObject<Class1[]>(Prefecture);
-            tbWeatherInfo.Text = "地名 : " + (string)lbArea.SelectedItem;
+            tbWeatherInfo.Text = " 地名 : " + (string)lbArea.SelectedItem;
             tbWeatherInfo.Text += Environment.NewLine;
             tbWeatherInfo.Text += "今日の天気 : " + json[0].timeSeries[0].areas[0].weathers[0];
             tbWeatherInfo.Text += Environment.NewLine;
             tbWeatherInfo.Text += "明日の天気 : " + json[0].timeSeries[0].areas[0].weathers[1];
             tbWeatherInfo.Text += Environment.NewLine;
-            tbWeatherInfo.Text += "明後日の天気 : " + json[0].timeSeries[0].areas[0].weathers[2];
+            try {
+                tbWeatherInfo.Text += "明後日の天気 : " + json[0].timeSeries[0].areas[0].weathers[2];
+            }
+            catch (Exception) {
+
+            }
+
+            
+            tbWeatherInfo.Text += "最低気温  : " + json[1].tempAverage.areas[0].min + "度";
             tbWeatherInfo.Text += Environment.NewLine;
-            tbWeatherInfo.Text += "最低気温 : " + json[1].tempAverage.areas[0].min + "度";
-            tbWeatherInfo.Text += Environment.NewLine;
-            tbWeatherInfo.Text += "最高気温 : " + json[1].tempAverage.areas[0].max + "度";
+            tbWeatherInfo.Text += "最高気温  : " + json[1].tempAverage.areas[0].max + "度";
             WeatherPicture();
             //tbWeatherInfo.Text += 
         }
@@ -44,16 +52,14 @@ namespace WeatherApp {
         private void lbCheack() {
             if(lbArea.Items.Count == 0) {
                 btWeatherGet.Enabled = false;
-                btClear.Enabled = false;
+                
             } else {
                 btWeatherGet.Enabled = true;
-                btClear.Enabled = true;
+                
             }
             
         }
-        private void tbCheack() {
-            
-        }
+       
         private void WeatherPicture() {
             var wc = new WebClient() {
                 Encoding = Encoding.UTF8
@@ -62,7 +68,13 @@ namespace WeatherApp {
 
             pbToday.ImageLocation = "https://www.jma.go.jp/bosai/forecast/img/" + json[0].timeSeries[0].areas[0].weatherCodes[0] +".png";
             pbTomorrow.ImageLocation = "https://www.jma.go.jp/bosai/forecast/img/" + json[0].timeSeries[0].areas[0].weatherCodes[1] + ".png";
-            pbTwodays.ImageLocation = "https://www.jma.go.jp/bosai/forecast/img/" + json[0].timeSeries[0].areas[0].weatherCodes[2] + ".png";
+            try {
+                pbTwodays.ImageLocation = "https://www.jma.go.jp/bosai/forecast/img/" + json[0].timeSeries[0].areas[0].weatherCodes[2] + ".png";
+
+            }
+            catch (Exception) {
+
+            }
         }
 
 
@@ -279,10 +291,11 @@ namespace WeatherApp {
                     Prefecture = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/450000.json");
 
                     break;
-                case "奄美地方":
-                    Prefecture = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/460040.json");
 
-                    break;
+                //case "奄美地方":
+                //    Prefecture = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/460040.json");
+
+                //    break;
                 case "鹿児島県":
                     Prefecture = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/460100.json");
 
@@ -308,18 +321,6 @@ namespace WeatherApp {
             }
         }
 
-        private void cbArea_SelectedIndexChanged(object sender, EventArgs e) {
-            
-
-        }
-
-        private void Form1_Paint(object sender, PaintEventArgs e) {
-            //if(currentImage != null) {
-            //    //画像を0,0に描画する
-            //    e.Graphics.DrawImage(currentImage,
-            //   200, 50, currentImage.Width, currentImage.Height);
-            //}
-        }
        
 
         private void btHokkaido_Click_1(object sender, EventArgs e) {
@@ -362,6 +363,7 @@ namespace WeatherApp {
  
 
         private void btKinki_Click(object sender, EventArgs e) {
+            lbClear();
             string[] Kinki = { "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県" };
             lbArea.Items.AddRange(Kinki);
             lbCheack();
@@ -385,17 +387,12 @@ namespace WeatherApp {
 
         private void btNkyusyu_Click(object sender, EventArgs e) {
             lbClear();
-            string[] Nkyusyu = { "山口県", "福岡県", "佐賀県", "長崎県", "熊本県", "大分県" };
+            string[] Nkyusyu = { "山口県", "福岡県", "佐賀県", "長崎県", "熊本県", "大分県","宮崎県", "鹿児島県" };
             lbArea.Items.AddRange(Nkyusyu);
             lbCheack();
         }
 
-        private void btSkyusyu_Click(object sender, EventArgs e) {
-            lbClear();
-            string[] Skyusyu = { "宮崎県", "奄美地方", "鹿児島県" };
-            lbArea.Items.AddRange(Skyusyu);
-            lbCheack();
-        }
+        
 
         private void btOkinawa_Click(object sender, EventArgs e) {
             lbClear();
@@ -409,13 +406,6 @@ namespace WeatherApp {
             }
         }
 
-        private void btClear_Click(object sender, EventArgs e) {
-            lbClear();
-            tbWeatherInfo.Text = null;
-            pbToday.ImageLocation = null;
-            pbTomorrow.ImageLocation = null;
-            pbTwodays.ImageLocation = null;
-            lbCheack();
-        }
+       
     }
 }
